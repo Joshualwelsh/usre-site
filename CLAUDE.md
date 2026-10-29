@@ -11,6 +11,7 @@ Shared code for US Retirement Educators' GoHighLevel (GHL) pages. Each GHL page 
 
 ## Pages
 - assessment: Retirement Risk Diagnostic (19 questions, 248-point max). Posts to the GHL inbound webhook in the file.
+- landing: Ethos-style hook page for the assessment funnel. ASSESSMENT_URL at the bottom of the script sets where every button goes (currently the TEST funnel, /assessment-5064).
 
 ## Working rules
 - Make only the change requested. Do not change scoring weights, brackets, or questions unless asked.

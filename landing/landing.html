@@ -1,0 +1,209 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+#usre-landing{--nv:#1a2f4e;--nd:#0f1e33;--gd:#c9a84c;--gdl:#f6efdc;--ow:#f7f8fa;--br:#e4e7ec;--tx:#1f2937;--mu:#5b6675;
+  font-family:'Inter',Arial,sans-serif;color:var(--tx);background:#fff;line-height:1.55;-webkit-font-smoothing:antialiased}
+#usre-landing *{box-sizing:border-box;margin:0;padding:0}
+#usre-landing a{color:inherit}
+#usre-landing .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+#usre-landing .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--gd);color:var(--nd);font-weight:700;font-size:16px;text-decoration:none;padding:16px 30px;border-radius:999px;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s;white-space:nowrap}
+#usre-landing .btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(201,168,76,.35)}
+#usre-landing .btn.sm{padding:11px 20px;font-size:14px}
+#usre-landing .btn.dark{background:var(--nd);color:#fff}
+#usre-landing .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8a6d1f;background:var(--gdl);padding:6px 12px;border-radius:999px;margin-bottom:18px}
+#usre-landing h1{font-size:50px;line-height:1.08;font-weight:800;color:var(--nd);letter-spacing:-1px;margin-bottom:18px}
+#usre-landing h1 em{font-style:normal;color:#b08a2e}
+#usre-landing h2{font-size:36px;line-height:1.15;font-weight:800;color:var(--nd);letter-spacing:-.5px;margin-bottom:12px}
+#usre-landing .lead{font-size:19px;color:var(--mu);max-width:560px;margin-bottom:28px}
+#usre-landing .sub{font-size:17px;color:var(--mu);max-width:640px;margin:0 auto 40px}
+#usre-landing section{padding:84px 0}
+#usre-landing .center{text-align:center}
+
+#usre-landing .top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);border-bottom:1px solid var(--br);backdrop-filter:blur(6px)}
+#usre-landing .top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+#usre-landing .logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--nd);font-size:17px;letter-spacing:-.2px}
+#usre-landing .mark{width:38px;height:38px;flex-shrink:0;border-radius:50%;background:var(--nd);color:var(--gd);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;letter-spacing:0}
+
+#usre-landing .hero{padding:72px 0 64px;background:linear-gradient(180deg,#fbfaf6 0%,#fff 100%)}
+#usre-landing .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+#usre-landing .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+#usre-landing .chip{font-size:14px;font-weight:600;color:var(--nd);background:#fff;border:1px solid var(--br);border-radius:999px;padding:9px 14px;text-decoration:none}
+#usre-landing .chip:hover{border-color:var(--gd)}
+#usre-landing .micro{font-size:13px;color:var(--mu);margin-top:14px}
+#usre-landing .report{background:#fff;border:1px solid var(--br);border-radius:20px;box-shadow:0 24px 60px rgba(15,30,51,.12);overflow:hidden}
+#usre-landing .report .rh{background:#991b1b;color:#fff;padding:22px 24px;text-align:center}
+#usre-landing .report .rl{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.75}
+#usre-landing .report .rs{font-size:46px;font-weight:800;line-height:1.1;margin:6px 0 2px}
+#usre-landing .report .rs span{font-size:18px;opacity:.6;font-weight:600}
+#usre-landing .report .rv{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+#usre-landing .report .rb{padding:18px 24px}
+#usre-landing .report .row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--br);font-size:14px}
+#usre-landing .report .row:last-child{border-bottom:none}
+#usre-landing .report .row b{color:#991b1b;white-space:nowrap}
+#usre-landing .report .tag{font-size:11px;color:var(--mu);text-align:center;padding:0 24px 16px}
+
+#usre-landing .trust{border-top:1px solid var(--br);border-bottom:1px solid var(--br);background:#fff;padding:26px 0}
+#usre-landing .trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+#usre-landing .stat{text-align:center}
+#usre-landing .stat b{display:block;font-size:26px;font-weight:800;color:var(--nd);letter-spacing:-.5px}
+#usre-landing .stat span{font-size:14px;color:var(--mu)}
+
+#usre-landing .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+#usre-landing .card{background:#fff;border:1px solid var(--br);border-radius:18px;padding:28px;text-align:left}
+#usre-landing .card.soft{background:var(--ow);border-color:transparent}
+#usre-landing .ic{width:48px;height:48px;border-radius:14px;background:var(--gdl);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px}
+#usre-landing .card h3{font-size:19px;font-weight:700;color:var(--nd);margin-bottom:8px}
+#usre-landing .card p{font-size:15px;color:var(--mu)}
+#usre-landing .card .kicker{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8a6d1f;margin-bottom:6px}
+#usre-landing .bg{background:var(--ow)}
+#usre-landing .dark{background:var(--nd);color:#fff}
+#usre-landing .dark h2{color:#fff}
+#usre-landing .dark .sub{color:#b6c0cf}
+
+#usre-landing .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
+#usre-landing .step{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:28px;text-align:left}
+#usre-landing .step .n{width:36px;height:36px;border-radius:50%;background:var(--gd);color:var(--nd);font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+#usre-landing .step h3{font-size:18px;font-weight:700;margin-bottom:6px;color:#fff}
+#usre-landing .step p{font-size:15px;color:#b6c0cf}
+
+#usre-landing .faq{max-width:760px;margin:0 auto;text-align:left}
+#usre-landing details{border-bottom:1px solid var(--br);padding:20px 0}
+#usre-landing summary{list-style:none;cursor:pointer;font-weight:700;font-size:17px;color:var(--nd);display:flex;justify-content:space-between;gap:16px;align-items:center}
+#usre-landing summary::-webkit-details-marker{display:none}
+#usre-landing summary:after{content:'+';font-size:24px;font-weight:400;color:var(--mu);flex-shrink:0}
+#usre-landing details[open] summary:after{content:'\2013'}
+#usre-landing details p{font-size:15px;color:var(--mu);margin-top:10px;max-width:680px}
+
+#usre-landing .final{text-align:center;background:linear-gradient(180deg,#fff 0%,#fbfaf6 100%)}
+#usre-landing .foot{background:var(--nd);color:#97a3b6;font-size:12px;padding:40px 0}
+#usre-landing .foot .links{display:flex;gap:18px;flex-wrap:wrap;margin:14px 0 18px}
+#usre-landing .foot .links a{color:#d5dbe5;text-decoration:none}
+#usre-landing .foot p{margin-bottom:10px;line-height:1.6;max-width:900px}
+#usre-landing .foot .logo{color:#fff}
+
+@media(max-width:900px){
+  #usre-landing .hero .wrap{grid-template-columns:1fr;gap:40px}
+  #usre-landing h1{font-size:38px}
+  #usre-landing h2{font-size:29px}
+  #usre-landing .cards,#usre-landing .steps{grid-template-columns:1fr}
+  #usre-landing .trust .wrap{grid-template-columns:repeat(2,1fr);row-gap:22px}
+  #usre-landing section{padding:60px 0}
+}
+@media(max-width:520px){
+  #usre-landing .wrap{padding:0 18px}
+  #usre-landing h1{font-size:32px}
+  #usre-landing .lead{font-size:17px}
+  #usre-landing .top .logo span.t{display:none}
+  #usre-landing .btn{width:100%}
+  #usre-landing .top .btn{width:auto}
+}
+</style>
+
+<div class="top"><div class="wrap">
+  <div class="logo"><div class="mark">USRE</div><span class="t">US Retirement Educators</span></div>
+  <a class="btn sm cta" href="#">Start Free Assessment</a>
+</div></div>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <div class="eyebrow">Free Retirement Risk Assessment</div>
+    <h1>Find out how <em>protected</em> your retirement really is.</h1>
+    <p class="lead">Answer a few quick questions and get a personalized report showing your market risk, your monthly income gap, and the long-term care costs to plan for.</p>
+    <a class="btn cta" href="#">Start My Free Assessment &rarr;</a>
+    <div class="micro">&#128274; Takes about 3 minutes &middot; Free &middot; Confidential</div>
+    <div class="chips"><a class="chip" href="#u-why">How can annuities help me?</a><a class="chip" href="#u-report">What will my report show?</a><a class="chip" href="#u-how">How does it work?</a></div>
+  </div>
+  <div class="report" aria-label="Sample retirement risk report">
+    <div class="rh"><div class="rl">Retirement Risk Analysis</div><div class="rs">164<span>/248</span></div><div class="rv">High Risk</div></div>
+    <div class="rb">
+      <div class="row"><span>At risk in a 30% market drop</span><b>&minus;$146,000</b></div>
+      <div class="row"><span>Amount to move into a safe product</span><b>$203,000</b></div>
+      <div class="row"><span>Monthly income gap</span><b>$3,000 / mo</b></div>
+      <div class="row"><span>Long-term care exposure</span><b>$156K&ndash;$473K</b></div>
+    </div>
+    <div class="tag">Sample report for illustration only</div>
+  </div>
+</div></section>
+
+<div class="trust"><div class="wrap">
+  <div class="stat"><b>25 years</b><span>in business</span></div>
+  <div class="stat"><b>10,000+</b><span>families helped</span></div>
+  <div class="stat"><b>All 50 states</b><span>licensed</span></div>
+  <div class="stat"><b>All carriers</b><span>and products represented</span></div>
+</div></div>
+
+<section class="center" id="u-report"><div class="wrap">
+  <h2>What your report shows you</h2>
+  <p class="sub">Most people don&rsquo;t know how exposed they are until a market drop or a health event forces the question. Your report puts real numbers on it.</p>
+  <div class="cards">
+    <div class="card"><div class="ic">&#128201;</div><h3>Market risk exposure</h3><p>How much of your savings could be lost in a 30% drop, and how much sits above the Rule of 100 for your age.</p></div>
+    <div class="card"><div class="ic">&#128176;</div><h3>Your monthly income gap</h3><p>The difference between what you need each month and what Social Security and other income cover.</p></div>
+    <div class="card"><div class="ic">&#127973;</div><h3>Long-term care costs</h3><p>What assisted living or a nursing home could cost you out of pocket if you don&rsquo;t have a plan.</p></div>
+  </div>
+</div></section>
+
+<section class="bg center" id="u-why"><div class="wrap">
+  <h2>Why retirees turn to annuities</h2>
+  <p class="sub">Annuities are designed to solve specific retirement problems. An advisor can show you whether one fits your situation.</p>
+  <div class="cards">
+    <div class="card"><div class="ic">&#128197;</div><h3>Guaranteed income</h3><p>Turn part of your savings into a paycheck you can&rsquo;t outlive, no matter what the market does.</p></div>
+    <div class="card"><div class="ic">&#128200;</div><h3>Tax-deferred growth</h3><p>Your money can grow without yearly taxes on the gains until you take it out.</p></div>
+    <div class="card"><div class="ic">&#128737;&#65039;</div><h3>Protection from market loss</h3><p>Some annuities protect your principal from market drops while still giving you room to grow.</p></div>
+  </div>
+</div></section>
+
+<section class="center"><div class="wrap">
+  <h2>Ways to put your savings to work</h2>
+  <p class="sub">Every retirement is different. Your assessment helps show which approach fits your goals.</p>
+  <div class="cards">
+    <div class="card soft"><div class="kicker">Income Annuity</div><h3>Guaranteed Income</h3><p>Monthly payments that start now or later and can last for life.</p></div>
+    <div class="card soft"><div class="kicker">MYGA</div><h3>Fixed Growth</h3><p>A set interest rate for a set number of years, similar to a CD but tax-deferred.</p></div>
+    <div class="card soft"><div class="kicker">Fixed Index Annuity</div><h3>Market-Index Growth</h3><p>Growth tied to a market index, with protection from losses when the market falls.</p></div>
+  </div>
+  <div style="margin-top:36px"><a class="btn cta" href="#">See What Fits Me &rarr;</a></div>
+</div></section>
+
+<section class="dark center" id="u-how"><div class="wrap">
+  <h2>How it works</h2>
+  <p class="sub">Three simple steps. No cost and no obligation.</p>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h3>Take the assessment</h3><p>Answer 19 quick questions about your savings, income, and plans.</p></div>
+    <div class="step"><div class="n">2</div><h3>Get your report</h3><p>See your risk score instantly, and get a copy by text and email.</p></div>
+    <div class="step"><div class="n">3</div><h3>Review with a specialist</h3><p>Walk through your numbers with a licensed advisor if you choose.</p></div>
+  </div>
+</div></section>
+
+<section class="center"><div class="wrap">
+  <h2>Your questions, answered</h2>
+  <div class="faq" style="margin-top:28px">
+    <details><summary>Is the assessment really free?</summary><p>Yes. There is no cost and no obligation to take the assessment or get your report.</p></details>
+    <details><summary>How long does it take?</summary><p>About 3 minutes. Most questions are a single tap, and a rough estimate is fine for the dollar amounts.</p></details>
+    <details><summary>What do I get at the end?</summary><p>A personalized report with your risk score, market exposure, income gap, and long-term care costs. We also send a copy to you by text and email.</p></details>
+    <details><summary>Is my information secure?</summary><p>Yes. Your information is kept confidential and is never sold or shared.</p></details>
+    <details><summary>What is an annuity?</summary><p>An annuity is a contract with an insurance company. You put money in, and in return it can grow tax-deferred and provide income later, sometimes for life. There are several types, each built for a different goal.</p></details>
+    <details><summary>Do annuities have fees or surrender charges?</summary><p>Some do. Many annuities have surrender charges if you withdraw more than allowed during the early years. A licensed advisor will explain the costs and terms of any product before you decide.</p></details>
+  </div>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <h2>Your retirement. Your peace of mind.</h2>
+  <p class="sub">See exactly where you stand in about 3 minutes.</p>
+  <a class="btn cta" href="#">Start My Free Assessment &rarr;</a>
+</div></section>
+
+<div class="foot"><div class="wrap">
+  <div class="logo"><div class="mark">USRE</div><span>US Retirement Educators</span></div>
+  <div class="links"><a href="https://www.usretirementeducators.org/disclosures" target="_blank" rel="noopener">Privacy Policy</a><a href="https://www.usretirementeducators.org/disclosures" target="_blank" rel="noopener">Terms of Service</a><a href="https://www.usretirementeducators.org/disclosures" target="_blank" rel="noopener">Disclosures</a></div>
+  <p>Annuity guarantees are backed by the financial strength and claims-paying ability of the issuing insurance company. Annuities are not bank deposits, are not FDIC insured, and are not insured by any federal government agency. Surrender charges may apply to early withdrawals. Withdrawals may be subject to income tax, and withdrawals before age 59&frac12; may be subject to an IRS penalty.</p>
+  <p>This website and assessment are for educational purposes only and are not tax, legal, or investment advice. The sample report is for illustration only. Results from the assessment are estimates based on the information you provide.</p>
+  <p>&copy; US Retirement Educators. All rights reserved.</p>
+</div></div>
+
+<script>
+(function(){
+  var ASSESSMENT_URL='https://www.usretirementeducators.org/assessment-5064';
+  var links=document.querySelectorAll('#usre-landing .cta');
+  for(var i=0;i<links.length;i++)links[i].href=ASSESSMENT_URL;
+  var chips=document.querySelectorAll('#usre-landing .chip');
+  for(var j=0;j<chips.length;j++)chips[j].addEventListener('click',function(e){var t=document.getElementById(this.getAttribute('href').slice(1));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});
+})();
+</script>
