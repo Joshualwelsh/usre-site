@@ -24,7 +24,8 @@
 #usre-landing .wm{font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:19px;letter-spacing:0;color:#0F2347}
 #usre-landing .wm em{font-style:normal;color:#B8913A}
 #usre-landing .logo small{display:block;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:12px;font-weight:400;color:var(--mu);letter-spacing:0;margin-top:2px}
-#usre-landing .logo img{height:44px;width:auto;display:block}
+#usre-landing .logo img{height:46px;width:46px;flex-shrink:0;display:block;border-radius:50%}
+#usre-landing .foot .logo img{height:54px;width:54px}
 #usre-landing .mark{width:38px;height:38px;flex-shrink:0;border-radius:50%;background:var(--nd);color:var(--gd);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;letter-spacing:0}
 
 #usre-landing .hero{padding:72px 0 64px;background:linear-gradient(180deg,#fbfaf6 0%,#fff 100%)}
@@ -217,7 +218,7 @@
 <script>
 (function(){
   var ASSESSMENT_URL='https://www.usretirementeducators.org/assessment-5064';
-  var LOGO_URL='';
+  var LOGO_URL='https://joshualwelsh.github.io/usre-site/assets/usre-logo.png';
   if(LOGO_URL){var ms=document.querySelectorAll('#usre-landing .mark');for(var k=0;k<ms.length;k++){var im=document.createElement('img');im.src=LOGO_URL;im.alt='US Retirement Educators';ms[k].parentNode.replaceChild(im,ms[k]);}}
   var links=document.querySelectorAll('#usre-landing .cta');
   for(var i=0;i<links.length;i++)links[i].href=ASSESSMENT_URL;
