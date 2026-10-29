@@ -1,0 +1,17 @@
+# USRE site code
+
+Shared code for US Retirement Educators' GoHighLevel (GHL) pages. Each GHL page holds only a one-line embed; the code lives here and is served by GitHub Pages at https://joshualwelsh.github.io/usre-site/.
+
+## Layout
+- `<name>/<name>.html` is the source to edit (style + markup + script).
+- `<name>/<name>.js` is generated. Never edit it by hand. Run `python3 build.py` after any change to a source file.
+
+## GHL embed for a page
+<div id="usre-NAME"></div><script src="https://joshualwelsh.github.io/usre-site/NAME/NAME.js"></script>
+
+## Pages
+- assessment: Retirement Risk Diagnostic (19 questions, 248-point max). Posts to the GHL inbound webhook in the file.
+
+## Working rules
+- Make only the change requested. Do not change scoring weights, brackets, or questions unless asked.
+- Test the built .js before pushing. Intercept the webhook in tests so no real leads are created.
