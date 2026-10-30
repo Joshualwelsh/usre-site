@@ -75,9 +75,14 @@
 <div id="ua-root"></div>
 <script>
 (function(){
-  // ONE ENTRY PER AGENT. The key (e.g. 'sample') is what goes in the link: /agent?a=sample
+  // ONE ENTRY PER AGENT. The key must match the agent's GHL page path (e.g. /jeremy-smith -> 'jeremy-smith').
+  // Every agent page uses the same embed; the path picks the agent. ?a=<key> also works.
   // Leave any field '' or [] and that part of the page is hidden (photo and video show a placeholder).
   var AGENTS={
+    'jeremy-smith':{
+      name:'Jeremy Smith',title:'Title',photo:'',video:'',bookUrl:'',
+      headline:'',creds:[],stats:[],quote:'',story:[],helps:[],testimonials:[]
+    },
     sample:{
       name:'Agent Name',
       title:'Licensed Retirement Specialist',
@@ -96,7 +101,7 @@
   var DEFAULT_BOOK='';               // fallback calendar link if an agent has none
   var AGENT_DEFAULT='sample';
 
-  var q=(location.search.match(/[?&]a=([^&]+)/)||[])[1];
+  var q=(location.search.match(/[?&]a=([^&]+)/)||[])[1]||location.pathname.replace(/\/+$/,'').split('/').pop();
   var a=AGENTS[decodeURIComponent(q||'').toLowerCase()]||AGENTS[AGENT_DEFAULT];
   function e(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   var first=e(a.name.split(' ')[0]);

@@ -2,19 +2,18 @@
 
 (function(){
   // TEAM: one entry per person, shown in this order.
-  // photo: image URL (leave '' to show the placeholder). slug: matches the agent page key.
-  var AGENT_PAGE='/agent';
+  // photo: image URL (leave '' to show the placeholder). slug: the agent's page path, e.g. 'jeremy-smith'.
   var TEAM=[
-    {name:'Team Member',title:'Title',photo:'',bio:'Short bio coming soon.',slug:'sample'},
-    {name:'Team Member',title:'Title',photo:'',bio:'Short bio coming soon.',slug:'sample'},
-    {name:'Team Member',title:'Title',photo:'',bio:'Short bio coming soon.',slug:'sample'},
-    {name:'Team Member',title:'Title',photo:'',bio:'Short bio coming soon.',slug:'sample'}
+    {name:'Jeremy Smith',title:'Title',photo:'',bio:'Short bio coming soon.',slug:'jeremy-smith'},
+    {name:'Team Member',title:'Title',photo:'',bio:'Short bio coming soon.',slug:''},
+    {name:'Team Member',title:'Title',photo:'',bio:'Short bio coming soon.',slug:''},
+    {name:'Team Member',title:'Title',photo:'',bio:'Short bio coming soon.',slug:''}
   ];
   var ph='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4.2"/><path d="M3.5 21c.9-4.4 4.3-7 8.5-7s7.6 2.6 8.5 7z"/></svg>';
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   var g=document.getElementById('usre-team-grid');if(!g)return;
   g.innerHTML=TEAM.map(function(p){
     return '<div class="m"><div class="ph">'+(p.photo?'<img src="'+esc(p.photo)+'" alt="'+esc(p.name)+'">':ph)+'</div>'+
-      '<div class="in"><h3>'+esc(p.name)+'</h3><div class="t">'+esc(p.title)+'</div><p>'+esc(p.bio)+'</p>'+(p.slug?'<a class="vp" href="'+AGENT_PAGE+'?a='+encodeURIComponent(p.slug)+'">View profile &rarr;</a>':'')+'</div></div>';
+      '<div class="in"><h3>'+esc(p.name)+'</h3><div class="t">'+esc(p.title)+'</div><p>'+esc(p.bio)+'</p>'+(p.slug?'<a class="vp" href="'+'/'+encodeURIComponent(p.slug)+'">View profile &rarr;</a>':'')+'</div></div>';
   }).join('');
 })();
