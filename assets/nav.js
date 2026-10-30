@@ -5,6 +5,7 @@
   var LINKS=[ // [label, path, insert after link whose text is]
     ['Meet the Team','/meet-the-team-8622','About Us']
   ];
+  var st=document.createElement('style');st.textContent='.usre-nav>a,.usre-nav button{white-space:nowrap}';document.head.appendChild(st);
   function add(){
     var navs=document.querySelectorAll('.usre-nav, .usre-mnav');
     if(!navs.length)return false;
