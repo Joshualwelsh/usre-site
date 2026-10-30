@@ -6,11 +6,11 @@
     ['Meet the Team','/meet-the-team-8622','FAQ']
   ];
   // Keeps the header on one line now that the menu has an extra link.
-  var CSS='.usre-nav>a,.usre-nav button{white-space:nowrap}'+
-    '@media(min-width:861px){.usre-hdr-in{max-width:1260px;gap:16px}.usre-brand{flex-shrink:0}.usre-brand-txt,.usre-brand-txt span{white-space:nowrap}'+
-    '.usre-nav>a,.usre-nav button{padding-left:10px!important;padding-right:10px!important}}'+
-    '@media(min-width:861px) and (max-width:1299px){.usre-nav>a,.usre-nav button{padding-left:7px!important;padding-right:7px!important;font-size:13.5px!important}.usre-cta-wrap a{padding-left:14px!important;padding-right:14px!important}}'+
-    '@media(min-width:861px) and (max-width:1149px){.usre-brand-txt span{display:none}.usre-nav>a,.usre-nav button{font-size:13px!important;padding-left:5px!important;padding-right:5px!important}}';
+  var H='.usre-hdr ';
+  var CSS=H+'.usre-nav>a,'+H+'.usre-nav button{white-space:nowrap}'+
+    '@media(min-width:1001px){'+H+'.usre-hdr-in{max-width:1260px;gap:16px}'+H+'.usre-brand{flex-shrink:0}'+H+'.usre-brand-txt,'+H+'.usre-brand-txt span{white-space:nowrap}'+H+'.usre-nav>a,'+H+'.usre-nav button{padding-left:10px;padding-right:10px}}'+
+    '@media(min-width:1001px) and (max-width:1299px){'+H+'.usre-nav>a,'+H+'.usre-nav button{padding-left:7px;padding-right:7px;font-size:13.5px}'+H+'.usre-cta-wrap a{padding-left:14px;padding-right:14px}}'+
+    '@media(min-width:1001px) and (max-width:1179px){'+H+'.usre-brand img{width:46px;height:46px}'+H+'.usre-brand-txt{font-size:17px}'+H+'.usre-brand-txt span{font-size:10px}'+H+'.usre-nav>a,'+H+'.usre-nav button{font-size:13px;padding-left:3px;padding-right:3px}}';
   var st=document.createElement('style');st.textContent=CSS;document.head.appendChild(st);
   function add(){
     var navs=document.querySelectorAll('.usre-nav, .usre-mnav');
