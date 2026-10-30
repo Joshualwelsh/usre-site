@@ -3,9 +3,15 @@
    Adds links to the menu that is built into each page's code. */
 (function(){
   var LINKS=[ // [label, path, insert after link whose text is]
-    ['Meet the Team','/meet-the-team-8622','About Us']
+    ['Meet the Team','/meet-the-team-8622','FAQ']
   ];
-  var st=document.createElement('style');st.textContent='.usre-nav>a,.usre-nav button{white-space:nowrap}';document.head.appendChild(st);
+  // Keeps the header on one line now that the menu has an extra link.
+  var CSS='.usre-nav>a,.usre-nav button{white-space:nowrap}'+
+    '@media(min-width:861px){.usre-hdr-in{max-width:1260px;gap:16px}.usre-brand{flex-shrink:0}.usre-brand-txt,.usre-brand-txt span{white-space:nowrap}'+
+    '.usre-nav>a,.usre-nav button{padding-left:10px!important;padding-right:10px!important}}'+
+    '@media(min-width:861px) and (max-width:1299px){.usre-nav>a,.usre-nav button{padding-left:7px!important;padding-right:7px!important;font-size:13.5px!important}.usre-cta-wrap a{padding-left:14px!important;padding-right:14px!important}}'+
+    '@media(min-width:861px) and (max-width:1149px){.usre-brand-txt span{display:none}.usre-nav>a,.usre-nav button{font-size:13px!important;padding-left:5px!important;padding-right:5px!important}}';
+  var st=document.createElement('style');st.textContent=CSS;document.head.appendChild(st);
   function add(){
     var navs=document.querySelectorAll('.usre-nav, .usre-mnav');
     if(!navs.length)return false;
