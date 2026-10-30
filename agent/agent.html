@@ -22,6 +22,14 @@
 #usre-agent .hero .hl{font-size:19px;color:#d5dbe5;max-width:560px;margin-bottom:28px}
 #usre-agent .creds{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
 #usre-agent .creds span{font-size:13px;font-weight:600;color:#fff;border:1px solid rgba(201,168,76,.5);border-radius:999px;padding:7px 14px}
+/* badges */
+#usre-agent .badges{padding:64px 0 56px;text-align:center}
+#usre-agent .bgrid{display:flex;flex-wrap:wrap;justify-content:center;gap:28px 22px;margin-top:28px}
+#usre-agent .bd{width:132px;display:flex;flex-direction:column;align-items:center;gap:10px}
+#usre-agent .bd svg{width:112px;height:112px;filter:drop-shadow(0 10px 18px rgba(15,35,71,.22));transition:transform .2s}
+#usre-agent .bd:hover svg{transform:translateY(-3px) rotate(-2deg)}
+#usre-agent .bd span{font-size:13px;font-weight:700;color:var(--nd);line-height:1.3}
+@media(max-width:600px){#usre-agent .bd{width:100px}#usre-agent .bd svg{width:88px;height:88px}#usre-agent .bgrid{gap:22px 12px}}
 /* stats */
 #usre-agent .stats{background:var(--nv);padding:30px 0}
 #usre-agent .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
@@ -75,12 +83,31 @@
 <div id="ua-root"></div>
 <script>
 (function(){
+  // BADGE LIBRARY. Add a badge to an agent with its key in that agent's badges list.
+  // ring = text around the top, big = center text, sub = small text under it, label = caption below.
+  var BADGES={
+    cre:{ring:'CERTIFIED',big:'CRE',sub:'EDUCATOR',label:'Certified Retirement Educator'},
+    lah:{ring:'LICENSED',big:'L&H',sub:'INSURANCE',label:'Life, Accident & Health Licensed'},
+    life:{ring:'LICENSED',big:'LIFE',sub:'INSURANCE',label:'Life Insurance Licensed'},
+    series6:{ring:'FINRA',big:'6',sub:'SERIES',label:'Series 6'},
+    series63:{ring:'FINRA',big:'63',sub:'SERIES',label:'Series 63'},
+    series65:{ring:'NASAA',big:'65',sub:'SERIES',label:'Series 65'},
+    series66:{ring:'NASAA',big:'66',sub:'SERIES',label:'Series 66'},
+    yrs5:{ring:'EXPERIENCE',big:'5',sub:'YEARS',label:'5+ Years in Business'},
+    yrs10:{ring:'EXPERIENCE',big:'10',sub:'YEARS',label:'10+ Years in Business'},
+    yrs15:{ring:'EXPERIENCE',big:'15',sub:'YEARS',label:'15+ Years in Business'},
+    yrs20:{ring:'EXPERIENCE',big:'20',sub:'YEARS',label:'20+ Years in Business'},
+    yrs25:{ring:'EXPERIENCE',big:'25',sub:'YEARS',label:'25+ Years in Business'},
+    allstates:{ring:'LICENSED',big:'50',sub:'STATES',label:'Licensed in All 50 States'}
+  };
+  var EVERY_AGENT=['cre'];          // badges every agent gets automatically
+
   // ONE ENTRY PER AGENT. The key must match the agent's GHL page path (e.g. /jeremy-smith -> 'jeremy-smith').
   // Every agent page uses the same embed; the path picks the agent. ?a=<key> also works.
   // Leave any field '' or [] and that part of the page is hidden (photo and video show a placeholder).
   var AGENTS={
     'jeremy-smith':{
-      name:'Jeremy Smith',title:'Title',photo:'',video:'',bookUrl:'',
+      name:'Jeremy Smith',title:'Title',photo:'',video:'',bookUrl:'',badges:[],
       headline:'',creds:[],stats:[],quote:'',story:[],helps:[],testimonials:[]
     },
     sample:{
@@ -90,6 +117,7 @@
       video:'',                       // YouTube, Vimeo, or .mp4 link
       bookUrl:'',                     // this agent's calendar link
       headline:'I help people approaching retirement protect what they’ve saved and turn it into income they can count on.',
+      badges:['lah','series65','yrs10'],   // keys from BADGES above
       creds:['Licensed in [states]','[Designation]','[X] years in retirement planning'],
       stats:[['[X]','years experience'],['[X]+','families helped'],['[X]','states licensed'],['All','carriers represented']],
       quote:'A short line in the agent’s own words about why they do this work.',
@@ -115,6 +143,21 @@
     if(m)return '<iframe src="https://player.vimeo.com/video/'+m[1]+'" allow="fullscreen; picture-in-picture" allowfullscreen title="Video"></iframe>';
     return '<video src="'+e(u)+'" controls playsinline preload="metadata"></video>';
   }
+  var bid=0;
+  function badge(b){
+    var id='uab'+(bid++);var big=e(b.big);var fs=big.length>=4?26:big.length===3?32:44;
+    return '<div class="bd"><svg viewBox="0 0 120 120" role="img" aria-label="'+e(b.label)+'">'+
+      '<defs><linearGradient id="'+id+'g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e6c873"/><stop offset=".5" stop-color="#c9a84c"/><stop offset="1" stop-color="#9c7b2c"/></linearGradient>'+
+      '<path id="'+id+'p" d="M22 60a38 38 0 0 1 76 0"/></defs>'+
+      '<circle cx="60" cy="60" r="57" fill="url(#'+id+'g)"/>'+
+      '<circle cx="60" cy="60" r="51" fill="#0F2347"/>'+
+      '<circle cx="60" cy="60" r="47" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="2 3" opacity=".7"/>'+
+      '<text font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700" letter-spacing="2.2" fill="#c9a84c" text-anchor="middle"><textPath href="#'+id+'p" startOffset="50%">'+e(b.ring)+'</textPath></text>'+
+      '<text x="60" y="'+(fs>=44?76:fs>=32?72:70)+'" font-family="Georgia,serif" font-size="'+fs+'" font-weight="700" fill="#fff" text-anchor="middle">'+big+'</text>'+
+      '<text x="60" y="92" font-family="Inter,Arial,sans-serif" font-size="8" font-weight="700" letter-spacing="1.8" fill="#c9a84c" text-anchor="middle">'+e(b.sub)+'</text>'+
+      '<path d="M44 99l3 2-1-3.6 3-2.2h-3.7L44 92l-1.3 3.2H39l3 2.2-1 3.6z M60 102l3 2-1-3.6 3-2.2h-3.7L60 95l-1.3 3.2H55l3 2.2-1 3.6z M76 99l3 2-1-3.6 3-2.2h-3.7L76 92l-1.3 3.2H71l3 2.2-1 3.6z" fill="#c9a84c"/>'+
+      '</svg><span>'+e(b.label)+'</span></div>';
+  }
   var h='';
   h+='<div class="hero"><div class="wrap"><div class="ph">'+(a.photo?'<img src="'+e(a.photo)+'" alt="'+e(a.name)+'">':person)+'</div><div>'+
      '<span class="ey">US Retirement Educators</span><h1>'+e(a.name)+'</h1><div class="ti">'+e(a.title)+'</div>'+
@@ -123,6 +166,8 @@
      (a.creds&&a.creds.length?'<div class="creds">'+a.creds.map(function(c){return '<span>'+e(c)+'</span>';}).join('')+'</div>':'')+
      '</div></div></div>';
   if(a.stats&&a.stats.length)h+='<div class="stats"><div class="wrap">'+a.stats.map(function(s){return '<div><b>'+e(s[0])+'</b><span>'+e(s[1])+'</span></div>';}).join('')+'</div></div>';
+  var bk=EVERY_AGENT.concat((a.badges||[]).filter(function(k){return EVERY_AGENT.indexOf(k)<0;})).filter(function(k){return BADGES[k];});
+  if(bk.length)h+='<section class="badges"><div class="wrap"><span class="ey">Credentials &amp; Accolades</span><h2>Licensed, certified, and experienced</h2><div class="bgrid">'+bk.map(function(k){return badge(BADGES[k]);}).join('')+'</div></div></section>';
   h+='<section><div class="wrap vid"><span class="ey">A Message From '+first+'</span><h2>Get to know me</h2><div class="vf">'+video(a.video)+'</div></div></section>';
   if(a.story&&a.story.length)h+='<section class="alt"><div class="wrap story"><div><span class="ey">My Story</span><h2>Why I do this work</h2>'+(a.quote?'<blockquote>“'+e(a.quote)+'”</blockquote>':'')+'</div><div class="tx">'+a.story.map(function(p){return '<p>'+e(p)+'</p>';}).join('')+'</div></div></section>';
   if(a.helps&&a.helps.length)h+='<section><div class="wrap"><span class="ey">How I Help</span><h2>What we’ll work on together</h2><div class="cards">'+a.helps.map(function(c){return '<div class="card"><h3>'+e(c[0])+'</h3><p>'+e(c[1])+'</p></div>';}).join('')+'</div></div></section>';
