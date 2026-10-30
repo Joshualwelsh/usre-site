@@ -80,21 +80,24 @@
       '<text x="40" y="'+y+'" font-family="Georgia,serif" font-size="'+fs+'" font-weight="700" fill="'+ink+'" text-anchor="middle">'+b[2]+'</text>'+
       '<path d="M32 '+(y+8)+'h16" stroke="'+acc+'" stroke-width="1.2"/></svg>';
   }
-  var CSS='.usre-credrow{display:block;width:100%;box-sizing:border-box;clear:both;background:#fff;padding:34px 24px 30px;border-bottom:1px solid #e4e7ec;text-align:center}'+
-    '.usre-credrow-in{width:100%;max-width:1120px;margin:0 auto;display:flex;align-items:flex-start;justify-content:center;flex-wrap:wrap;gap:22px 14px}'+
-    '.usre-credrow .cb{flex:0 0 auto;margin:0;width:106px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}'+
-    '.usre-credrow svg{display:block;margin:0 auto;width:72px;height:72px;filter:drop-shadow(0 4px 10px rgba(15,35,71,.18))}'+
-    '.usre-credrow span{display:block;text-align:center;font:600 12px/1.3 Inter,Arial,sans-serif;color:#5b6675}'+
-    '@media(max-width:600px){.usre-credrow{padding:28px 12px 24px}.usre-credrow-in{gap:18px 6px}.usre-credrow .cb{width:100px}.usre-credrow svg{width:60px;height:60px}}';
+  // The row is drawn inside a shadow root so the page's own styles can't squeeze or shift it.
+  var CSS=':host{all:initial;display:block!important;width:100%!important;max-width:none!important;flex:0 0 100%!important;grid-column:1/-1!important;float:none!important;clear:both!important;box-sizing:border-box!important}'+
+    '.row{box-sizing:border-box;width:100%;background:#fff;padding:36px 24px 32px;border-bottom:1px solid #e4e7ec}'+
+    '.in{box-sizing:border-box;width:100%;max-width:1140px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-evenly;align-items:flex-start;gap:24px 8px}'+
+    '.cb{flex:0 0 108px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}'+
+    'svg{display:block;width:72px;height:72px;filter:drop-shadow(0 4px 10px rgba(15,35,71,.18))}'+
+    'span{display:block;font:600 12px/1.3 Inter,Arial,sans-serif;color:#5b6675}'+
+    '@media(max-width:600px){.row{padding:28px 10px 24px}.in{justify-content:center;gap:20px 4px}.cb{flex-basis:30%}svg{width:60px;height:60px}}';
   function add(){
     var hero=document.querySelector('.usre-hero');if(!hero)return false;
     // Goes right after the stats bar (the first block after the hero with several numbers like 6,000+). Falls back to after the hero.
     var at=hero,sib=hero.nextElementSibling;
     for(var k=0;sib&&k<5;k++,sib=sib.nextElementSibling){if((sib.textContent.match(/\d[\d,]*\s*[+\u2605]/g)||[]).length>=2){at=sib;break;}}
     if(document.querySelector('.usre-credrow'))return true;
-    var st=document.createElement('style');st.textContent=CSS;document.head.appendChild(st);
     var d=document.createElement('div');d.className='usre-credrow';
-    d.innerHTML='<div class="usre-credrow-in">'+BADGES.map(function(b){return '<div class="cb">'+svg(b)+'<span>'+b[3].replace(/&/g,'&amp;')+'</span></div>';}).join('')+'</div>';
+    d.setAttribute('style','display:block!important;width:100%!important;max-width:none!important;flex:0 0 100%!important;grid-column:1/-1!important;margin:0!important;padding:0!important');
+    var root=d.attachShadow?d.attachShadow({mode:'open'}):d;
+    root.innerHTML='<style>'+CSS+'</style><div class="row"><div class="in">'+BADGES.map(function(b){return '<div class="cb">'+svg(b)+'<span>'+b[3].replace(/&/g,'&amp;')+'</span></div>';}).join('')+'</div></div>';
     at.parentNode.insertBefore(d,at.nextSibling);return true;
   }
   if(!add()){var n=0,t=setInterval(function(){if(add()||++n>40)clearInterval(t);},250);}
