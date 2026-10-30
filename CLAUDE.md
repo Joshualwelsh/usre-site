@@ -15,6 +15,11 @@ Shared code for US Retirement Educators' GoHighLevel (GHL) pages. Each GHL page 
 - agent: Agent profile page. Each agent has a GHL page at /<key> (e.g. /jeremy-smith) with the same embed; the path picks the AGENTS entry. Team cards link there via slug.
 - landing: Ethos-style hook page for the assessment funnel. ASSESSMENT_URL at the bottom of the script sets where every button goes (currently the TEST funnel, /assessment-5064).
 
+## Website (GHL site "USRE Copy", usretirementeducators.org)
+- Each website page (Home /home-279180, /growth, /income, /roth-conversion, /carriers, /disclosures) is one pasted Custom HTML block with its own copy of the header menu (.usre-nav desktop, .usre-mnav mobile). Those blocks are not in this repo yet.
+- assets/nav.js adds extra menu links on every page. It loads from Website Settings > Body tracking code. To add or change a menu link, edit LINKS in assets/nav.js and push; no GHL change needed.
+- Meet the Team page path: /meet-the-team-8622. Agent pages: /<key>, e.g. /jeremy-smith.
+
 ## Working rules
 - Make only the change requested. Do not change scoring weights, brackets, or questions unless asked.
 - Test the built .js before pushing. Intercept the webhook in tests so no real leads are created.
