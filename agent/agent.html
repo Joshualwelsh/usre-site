@@ -23,13 +23,12 @@
 #usre-agent .creds{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
 #usre-agent .creds span{font-size:13px;font-weight:600;color:#fff;border:1px solid rgba(201,168,76,.5);border-radius:999px;padding:7px 14px}
 /* badges */
-#usre-agent .badges{padding:64px 0 56px;text-align:center}
-#usre-agent .bgrid{display:flex;flex-wrap:wrap;justify-content:center;gap:28px 22px;margin-top:28px}
-#usre-agent .bd{width:132px;display:flex;flex-direction:column;align-items:center;gap:10px}
-#usre-agent .bd svg{width:112px;height:112px;filter:drop-shadow(0 10px 18px rgba(15,35,71,.22));transition:transform .2s}
-#usre-agent .bd:hover svg{transform:translateY(-3px) rotate(-2deg)}
-#usre-agent .bd span{font-size:13px;font-weight:700;color:var(--nd);line-height:1.3}
-@media(max-width:600px){#usre-agent .bd{width:100px}#usre-agent .bd svg{width:88px;height:88px}#usre-agent .bgrid{gap:22px 12px}}
+#usre-agent .badges{padding:56px 0 48px;text-align:center}
+#usre-agent .bgrid{display:flex;flex-wrap:wrap;justify-content:center;gap:24px 18px;margin-top:26px}
+#usre-agent .bd{width:104px;display:flex;flex-direction:column;align-items:center;gap:8px}
+#usre-agent .bd svg{width:76px;height:76px;filter:drop-shadow(0 4px 10px rgba(15,35,71,.18))}
+#usre-agent .bd span{font-size:12px;font-weight:600;color:var(--mu);line-height:1.3}
+@media(max-width:600px){#usre-agent .bd{width:92px}#usre-agent .bd svg{width:64px;height:64px}}
 /* stats */
 #usre-agent .stats{background:var(--nv);padding:30px 0}
 #usre-agent .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
@@ -85,20 +84,21 @@
 (function(){
   // BADGE LIBRARY. Add a badge to an agent with its key in that agent's badges list.
   // ring = text around the top, big = center text, sub = small text under it, label = caption below.
+  // type sets the shape: cert = solid gold seal, license = shield, exam = hexagon, years = ring.
   var BADGES={
-    cre:{ring:'CERTIFIED',big:'CRE',sub:'EDUCATOR',label:'Certified Retirement Educator'},
-    lah:{ring:'LICENSED',big:'L&H',sub:'INSURANCE',label:'Life, Accident & Health Licensed'},
-    life:{ring:'LICENSED',big:'LIFE',sub:'INSURANCE',label:'Life Insurance Licensed'},
-    series6:{ring:'FINRA',big:'6',sub:'SERIES',label:'Series 6'},
-    series63:{ring:'FINRA',big:'63',sub:'SERIES',label:'Series 63'},
-    series65:{ring:'NASAA',big:'65',sub:'SERIES',label:'Series 65'},
-    series66:{ring:'NASAA',big:'66',sub:'SERIES',label:'Series 66'},
-    yrs5:{ring:'EXPERIENCE',big:'5',sub:'YEARS',label:'5+ Years in Business'},
-    yrs10:{ring:'EXPERIENCE',big:'10',sub:'YEARS',label:'10+ Years in Business'},
-    yrs15:{ring:'EXPERIENCE',big:'15',sub:'YEARS',label:'15+ Years in Business'},
-    yrs20:{ring:'EXPERIENCE',big:'20',sub:'YEARS',label:'20+ Years in Business'},
-    yrs25:{ring:'EXPERIENCE',big:'25',sub:'YEARS',label:'25+ Years in Business'},
-    allstates:{ring:'LICENSED',big:'50',sub:'STATES',label:'Licensed in All 50 States'}
+    cre:{type:'cert',top:'CERTIFIED',big:'CRE',label:'Certified Retirement Educator'},
+    lah:{type:'license',top:'LICENSED',big:'L&H',label:'Life, Accident & Health'},
+    life:{type:'license',top:'LICENSED',big:'LIFE',label:'Life Insurance'},
+    allstates:{type:'license',top:'LICENSED',big:'50',label:'Licensed in All 50 States'},
+    series6:{type:'exam',top:'SERIES',big:'6',label:'Series 6'},
+    series63:{type:'exam',top:'SERIES',big:'63',label:'Series 63'},
+    series65:{type:'exam',top:'SERIES',big:'65',label:'Series 65'},
+    series66:{type:'exam',top:'SERIES',big:'66',label:'Series 66'},
+    yrs5:{type:'years',top:'YEARS',big:'5+',label:'5+ Years in Business'},
+    yrs10:{type:'years',top:'YEARS',big:'10+',label:'10+ Years in Business'},
+    yrs15:{type:'years',top:'YEARS',big:'15+',label:'15+ Years in Business'},
+    yrs20:{type:'years',top:'YEARS',big:'20+',label:'20+ Years in Business'},
+    yrs25:{type:'years',top:'YEARS',big:'25+',label:'25+ Years in Business'}
   };
   var EVERY_AGENT=['cre'];          // badges every agent gets automatically
 
@@ -143,19 +143,19 @@
     if(m)return '<iframe src="https://player.vimeo.com/video/'+m[1]+'" allow="fullscreen; picture-in-picture" allowfullscreen title="Video"></iframe>';
     return '<video src="'+e(u)+'" controls playsinline preload="metadata"></video>';
   }
-  var bid=0;
+  var SHAPES={
+    cert:'<circle cx="40" cy="40" r="38" fill="#c9a84c"/><circle cx="40" cy="40" r="33" fill="none" stroke="#0F2347" stroke-width="1.2" opacity=".55"/>',
+    license:'<path d="M40 3l32 10v24c0 20-14 33-32 40C22 70 8 57 8 37V13z" fill="#0F2347" stroke="#c9a84c" stroke-width="2.5"/>',
+    exam:'<path d="M40 3l32 18.5v37L40 77 8 58.5v-37z" fill="#0F2347" stroke="#c9a84c" stroke-width="2.5"/>',
+    years:'<circle cx="40" cy="40" r="37" fill="#0F2347" stroke="#c9a84c" stroke-width="2.5"/><circle cx="40" cy="40" r="31" fill="none" stroke="#c9a84c" stroke-width=".8" opacity=".6"/>'
+  };
   function badge(b){
-    var id='uab'+(bid++);var big=e(b.big);var fs=big.length>=4?26:big.length===3?32:44;
-    return '<div class="bd"><svg viewBox="0 0 120 120" role="img" aria-label="'+e(b.label)+'">'+
-      '<defs><linearGradient id="'+id+'g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e6c873"/><stop offset=".5" stop-color="#c9a84c"/><stop offset="1" stop-color="#9c7b2c"/></linearGradient>'+
-      '<path id="'+id+'p" d="M22 60a38 38 0 0 1 76 0"/></defs>'+
-      '<circle cx="60" cy="60" r="57" fill="url(#'+id+'g)"/>'+
-      '<circle cx="60" cy="60" r="51" fill="#0F2347"/>'+
-      '<circle cx="60" cy="60" r="47" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="2 3" opacity=".7"/>'+
-      '<text font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700" letter-spacing="2.2" fill="#c9a84c" text-anchor="middle"><textPath href="#'+id+'p" startOffset="50%">'+e(b.ring)+'</textPath></text>'+
-      '<text x="60" y="'+(fs>=44?76:fs>=32?72:70)+'" font-family="Georgia,serif" font-size="'+fs+'" font-weight="700" fill="#fff" text-anchor="middle">'+big+'</text>'+
-      '<text x="60" y="92" font-family="Inter,Arial,sans-serif" font-size="8" font-weight="700" letter-spacing="1.8" fill="#c9a84c" text-anchor="middle">'+e(b.sub)+'</text>'+
-      '<path d="M44 99l3 2-1-3.6 3-2.2h-3.7L44 92l-1.3 3.2H39l3 2.2-1 3.6z M60 102l3 2-1-3.6 3-2.2h-3.7L60 95l-1.3 3.2H55l3 2.2-1 3.6z M76 99l3 2-1-3.6 3-2.2h-3.7L76 92l-1.3 3.2H71l3 2.2-1 3.6z" fill="#c9a84c"/>'+
+    var big=e(b.big),gold=b.type==='cert',ink=gold?'#0F2347':'#fff',acc=gold?'#0F2347':'#c9a84c';
+    var fs=big.length>=4?16:big.length===3?20:26,y=b.type==='license'?47:49;
+    return '<div class="bd"><svg viewBox="0 0 80 80" role="img" aria-label="'+e(b.label)+'">'+(SHAPES[b.type]||SHAPES.years)+
+      '<text x="40" y="'+(y-(fs>=26?22:19))+'" font-family="Inter,Arial,sans-serif" font-size="6.5" font-weight="700" letter-spacing="1.4" fill="'+acc+'" text-anchor="middle">'+e(b.top)+'</text>'+
+      '<text x="40" y="'+y+'" font-family="Georgia,serif" font-size="'+fs+'" font-weight="700" fill="'+ink+'" text-anchor="middle">'+big+'</text>'+
+      '<path d="M32 '+(y+8)+'h16" stroke="'+acc+'" stroke-width="1.2"/>'+
       '</svg><span>'+e(b.label)+'</span></div>';
   }
   var h='';
