@@ -16,8 +16,10 @@ Shared code for US Retirement Educators' GoHighLevel (GHL) pages. Each GHL page 
 - landing: Ethos-style hook page for the assessment funnel. ASSESSMENT_URL at the bottom of the script sets where every button goes (currently the TEST funnel, /assessment-5064).
 
 ## Website (GHL site "USRE Copy", usretirementeducators.org)
-- Each website page (Home /home-279180, /growth, /income, /roth-conversion, /carriers, /disclosures) is one pasted Custom HTML block with its own copy of the header menu (.usre-nav desktop, .usre-mnav mobile). Those blocks are not in this repo yet.
-- assets/nav.js adds extra menu links on every page. It loads from Website Settings > Body tracking code. To add or change a menu link, edit LINKS in assets/nav.js and push; no GHL change needed. The same file adds a looping badge strip under the home page stats bar (SHOW flag turns it off; artwork generated per badge in ART).
+- Design system: _site/site.html holds the shared CSS (scoped to .usre-site, us-* classes), header, footer and script. Any page source containing <!--@site--> gets it at build time. SITE links (home, assessment, book, team, logo) live at the top of its script; change once, every page updates.
+- Website pages in this repo: home (/home-279180), growth, income, roth-conversion, carriers, disclosures; team and agent also use the shared header/footer. Disclosures text is legal copy: keep it verbatim.
+- Until a GHL page is swapped to its embed, it still runs its old pasted Custom HTML (classes .usre-nav/.usre-hero).
+- assets/nav.js (legacy, for old pasted pages only) adds extra menu links on every page. It loads from Website Settings > Body tracking code. To add or change a menu link, edit LINKS in assets/nav.js and push; no GHL change needed. The same file adds a looping badge strip under the home page stats bar (SHOW flag turns it off; artwork generated per badge in ART).
 - Meet the Team page path: /meet-the-team-8622. Agent pages: /<key>, e.g. /jeremy-smith.
 
 ## Working rules
