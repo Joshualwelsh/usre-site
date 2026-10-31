@@ -1,5 +1,5 @@
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Allura&display=swap');
 #usre-agent{--nd:#0F2347;--nv:#1a2f4e;--gd:#c9a84c;--gdk:#B8913A;--gdl:#f6efdc;--ow:#f7f8fa;--br:#e4e7ec;--tx:#1f2937;--mu:#5b6675;
   font-family:'Inter',Arial,sans-serif;color:var(--tx);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
 #usre-agent *{box-sizing:border-box;margin:0;padding:0}
@@ -58,6 +58,37 @@
 #usre-agent .step .n{width:36px;height:36px;border-radius:50%;background:var(--gd);color:var(--nd);font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
 #usre-agent .step h3{font-size:18px;color:var(--nd);margin-bottom:6px}
 #usre-agent .step p{font-size:15px;color:var(--mu)}
+/* hero actions */
+#usre-agent .acts{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+#usre-agent .lnk{color:#fff;font-weight:600;font-size:15px;text-decoration:none;border-bottom:1px solid rgba(201,168,76,.7);padding-bottom:2px}
+/* letter */
+#usre-agent .letter{display:grid;grid-template-columns:320px 1fr;gap:48px;align-items:start}
+#usre-agent .letter .lp{aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:linear-gradient(160deg,var(--nv),#0a1830);display:flex;align-items:center;justify-content:center;box-shadow:0 24px 60px rgba(15,30,51,.16)}
+#usre-agent .letter .lp img{width:100%;height:100%;object-fit:cover}
+#usre-agent .letter .lp svg{width:45%;color:rgba(201,168,76,.55)}
+#usre-agent .paper{background:#fff;border:1px solid var(--br);border-top:4px solid var(--gd);border-radius:6px 6px 18px 18px;padding:40px 44px;box-shadow:0 18px 50px rgba(15,30,51,.08)}
+#usre-agent .paper p{font-family:Georgia,'Times New Roman',serif;font-size:18px;line-height:1.7;color:#2b3443;margin-bottom:16px}
+#usre-agent .sig{font-family:'Allura',cursive;font-size:44px;color:var(--nd);line-height:1;margin-top:18px}
+#usre-agent .sigt{font-size:13px;color:var(--mu);margin-top:6px}
+/* reasons */
+#usre-agent .reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:28px}
+#usre-agent .rs{padding:28px;border-radius:18px;background:#fff;border:1px solid var(--br)}
+#usre-agent .rs .rn{font-family:Georgia,serif;font-size:34px;color:var(--gd);line-height:1;margin-bottom:12px}
+#usre-agent .rs h3{font-size:18px;color:var(--nd);margin-bottom:8px}
+#usre-agent .rs p{font-size:15px;color:var(--mu)}
+/* prep */
+#usre-agent .prep{margin-top:36px;background:#fff;border:1px solid var(--br);border-radius:18px;padding:26px 30px}
+#usre-agent .prep h3{font-size:17px;color:var(--nd);margin-bottom:12px}
+#usre-agent .prep ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 28px}
+#usre-agent .prep li{font-size:15px;color:#374151;padding-left:26px;position:relative}
+#usre-agent .prep li:before{content:'';position:absolute;left:0;top:5px;width:14px;height:8px;border-left:2px solid var(--gdk);border-bottom:2px solid var(--gdk);transform:rotate(-45deg)}
+/* personal */
+#usre-agent .pers{max-width:760px;margin:0 auto;text-align:center}
+#usre-agent .pers p{font-size:17px;color:#374151;margin-bottom:14px}
+#usre-agent .tags{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:18px}
+#usre-agent .tags span{font-size:14px;font-weight:600;color:var(--nd);background:var(--gdl);border-radius:999px;padding:8px 16px}
+#usre-agent .final .sig{color:var(--gd);margin:6px 0 24px}
+#usre-agent .final small{display:block;margin-top:18px;color:#97a3b6;font-size:14px}
 /* final */
 #usre-agent .final{background:var(--nd);color:#fff;text-align:center}
 #usre-agent .final h2{color:#fff}
@@ -70,13 +101,19 @@
   #usre-agent .creds{justify-content:center}
   #usre-agent .stats .wrap{grid-template-columns:repeat(2,1fr)}
   #usre-agent .story{grid-template-columns:1fr;gap:28px}
-  #usre-agent .cards,#usre-agent .steps{grid-template-columns:1fr}
+  #usre-agent .cards,#usre-agent .steps,#usre-agent .reasons{grid-template-columns:1fr}
+  #usre-agent .letter{grid-template-columns:1fr;gap:28px}
+  #usre-agent .letter .lp{max-width:300px;margin:0 auto;width:100%}
+  #usre-agent .acts{justify-content:center}
 }
 @media(max-width:600px){
   #usre-agent .hero h1{font-size:34px}
   #usre-agent h2{font-size:26px}
   #usre-agent section{padding:52px 0}
   #usre-agent .btn{width:100%}
+  #usre-agent .paper{padding:28px 22px}
+  #usre-agent .paper p{font-size:17px}
+  #usre-agent .prep ul{grid-template-columns:1fr}
 }
 </style>
 <div id="ua-root"></div>
@@ -104,26 +141,31 @@
 
   // ONE ENTRY PER AGENT. The key must match the agent's GHL page path (e.g. /jeremy-smith -> 'jeremy-smith').
   // Every agent page uses the same embed; the path picks the agent. ?a=<key> also works.
-  // Leave any field '' or [] and that part of the page is hidden (photo and video show a placeholder).
+  // TWO TEMPLATES, picked automatically: if video is set, the page shows "A message from [name]" (video).
+  // If video is '', it shows "A note from [name]" (a personal letter with photo2) instead.
+  // Any section whose field is empty is hidden.
   var AGENTS={
     'jeremy-smith':{
-      name:'Jeremy Smith',title:'Title',photo:'',video:'',bookUrl:'',badges:[],
-      headline:'',creds:[],stats:[],quote:'',story:[],helps:[],testimonials:[]
+      name:'Jeremy Smith',title:'Title',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
+      headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
     },
     sample:{
       name:'Agent Name',
       title:'Licensed Retirement Specialist',
-      photo:'',                       // image URL
-      video:'',                       // YouTube, Vimeo, or .mp4 link
+      photo:'',                       // headshot URL
+      photo2:'',                      // second, more casual photo (used with the letter)
+      video:'',                       // YouTube, Vimeo, or .mp4 link. Leave '' for the letter version.
       bookUrl:'',                     // this agent's calendar link
-      headline:'I help people approaching retirement protect what they’ve saved and turn it into income they can count on.',
+      headline:'I help people approaching retirement protect what they\u2019ve saved and turn it into income they can count on.',
       badges:['lah','series65','yrs10'],   // keys from BADGES above
-      creds:['Licensed in [states]','[Designation]','[X] years in retirement planning'],
-      stats:[['[X]','years experience'],['[X]+','families helped'],['[X]','states licensed'],['All','carriers represented']],
-      quote:'A short line in the agent’s own words about why they do this work.',
-      story:['Paragraph one: background and how they got into retirement planning.','Paragraph two: what drives them, who they love working with, and what clients can expect from them.','Paragraph three: something personal — family, hometown, faith, hobbies — so clients see the person.'],
-      helps:[['Retirement income planning','Building a paycheck from savings and Social Security that lasts.'],['Protecting your savings','Reducing how much a market drop can take from your retirement.'],['Long-term care planning','Preparing for care costs before they become a crisis.']],
-      testimonials:[]                 // e.g. [['Quote text','Client first name, City']]
+      stats:[['[X]','years experience'],['[X]+','families helped'],['[X]','states licensed']],
+      letter:['Thank you for taking the time to get to know me. I know how big these decisions feel, and I don\u2019t take your trust lightly.','My job is simple: help you understand exactly where you stand, show you your options in plain English, and make sure you feel confident about your retirement, whether or not we end up working together.','I\u2019m looking forward to talking with you.'],
+      quote:'A short line in the agent\u2019s own words about why they do this work.',
+      story:['Paragraph one: background and how they got into retirement planning.','Paragraph two: what drives them and who they love working with.'],
+      reasons:[['I explain, I don\u2019t sell','You\u2019ll understand every option before you decide anything.'],['Your plan, not a product','I start with your goals and your numbers, then find what fits.'],['I\u2019m here for the long run','You\u2019ll have my direct line, before and after any decision.']],
+      testimonials:[],                // e.g. [['Quote text','Client first name, City']]
+      personal:['A short paragraph about life outside work: family, hometown, faith, what weekends look like.'],
+      interests:['Family','Golf','Faith','Travel']
     }
   };
   var DEFAULT_BOOK='';               // fallback calendar link if an agent has none
@@ -158,26 +200,30 @@
       '<path d="M32 '+(y+8)+'h16" stroke="'+acc+'" stroke-width="1.2"/>'+
       '</svg><span>'+e(b.label)+'</span></div>';
   }
-  var h='';
+  var h='',hasVid=!!a.video,hasLetter=!!(a.letter&&a.letter.length);
+  var msg=hasVid?'Watch '+first+'\u2019s message':hasLetter?'Read '+first+'\u2019s note':'';
   h+='<div class="hero"><div class="wrap"><div class="ph">'+(a.photo?'<img src="'+e(a.photo)+'" alt="'+e(a.name)+'">':person)+'</div><div>'+
      '<span class="ey">US Retirement Educators</span><h1>'+e(a.name)+'</h1><div class="ti">'+e(a.title)+'</div>'+
      (a.headline?'<p class="hl">'+e(a.headline)+'</p>':'')+
-     '<a class="btn" href="'+e(book)+'">Book a Call with '+first+'</a>'+
-     (a.creds&&a.creds.length?'<div class="creds">'+a.creds.map(function(c){return '<span>'+e(c)+'</span>';}).join('')+'</div>':'')+
+     '<div class="acts">'+(msg?'<a class="btn" href="#ua-msg">'+msg+'</a>':'')+'<a class="'+(msg?'lnk':'btn')+'" href="'+e(book)+'">Schedule a call with '+first+'</a></div>'+
      '</div></div></div>';
-  if(a.stats&&a.stats.length)h+='<div class="stats"><div class="wrap">'+a.stats.map(function(s){return '<div><b>'+e(s[0])+'</b><span>'+e(s[1])+'</span></div>';}).join('')+'</div></div>';
+  if(a.stats&&a.stats.length)h+='<div class="stats"><div class="wrap" style="grid-template-columns:repeat('+Math.min(a.stats.length,4)+',1fr)">'+a.stats.map(function(s){return '<div><b>'+e(s[0])+'</b><span>'+e(s[1])+'</span></div>';}).join('')+'</div></div>';
   var bk=EVERY_AGENT.concat((a.badges||[]).filter(function(k){return EVERY_AGENT.indexOf(k)<0;})).filter(function(k){return BADGES[k];});
   if(bk.length)h+='<section class="badges"><div class="wrap"><span class="ey">Credentials &amp; Accolades</span><h2>Licensed, certified, and experienced</h2><div class="bgrid">'+bk.map(function(k){return badge(BADGES[k]);}).join('')+'</div></div></section>';
-  h+='<section><div class="wrap vid"><span class="ey">A Message From '+first+'</span><h2>Get to know me</h2><div class="vf">'+video(a.video)+'</div></div></section>';
-  if(a.story&&a.story.length)h+='<section class="alt"><div class="wrap story"><div><span class="ey">My Story</span><h2>Why I do this work</h2>'+(a.quote?'<blockquote>“'+e(a.quote)+'”</blockquote>':'')+'</div><div class="tx">'+a.story.map(function(p){return '<p>'+e(p)+'</p>';}).join('')+'</div></div></section>';
-  if(a.helps&&a.helps.length)h+='<section><div class="wrap"><span class="ey">How I Help</span><h2>What we’ll work on together</h2><div class="cards">'+a.helps.map(function(c){return '<div class="card"><h3>'+e(c[0])+'</h3><p>'+e(c[1])+'</p></div>';}).join('')+'</div></div></section>';
-  if(a.testimonials&&a.testimonials.length)h+='<section class="alt"><div class="wrap"><span class="ey">Client Stories</span><h2>What clients say</h2><div class="cards">'+a.testimonials.map(function(t){return '<div class="tq"><p>“'+e(t[0])+'”</p><b>'+e(t[1])+'</b></div>';}).join('')+'</div></div></section>';
-  h+='<section'+(a.testimonials&&a.testimonials.length?'':' class="alt"')+'><div class="wrap"><span class="ey">What to Expect</span><h2>Your call with '+first+'</h2><div class="steps">'+
-     '<div class="step"><div class="n">1</div><h3>Pick a time</h3><p>Choose a time that works for you. Calls are free and there’s no obligation.</p></div>'+
-     '<div class="step"><div class="n">2</div><h3>Talk through your goals</h3><p>We’ll review where you are today and what you want retirement to look like.</p></div>'+
-     '<div class="step"><div class="n">3</div><h3>Get clear next steps</h3><p>You’ll leave with a plain-English picture of your options, whether or not we work together.</p></div>'+
-     '</div></div></section>';
-  h+='<section class="final"><div class="wrap"><h2>Ready to talk with '+first+'?</h2><p>A better retirement starts with a better education.</p><a class="btn" href="'+e(book)+'">Book a Call with '+first+'</a></div></section>';
+  if(hasVid)h+='<section class="alt" id="ua-msg"><div class="wrap vid"><span class="ey">A Message From '+first+'</span><h2>Get to know me</h2><div class="vf">'+video(a.video)+'</div></div></section>';
+  else if(hasLetter){var p2=a.photo2||a.photo;
+    h+='<section class="alt" id="ua-msg"><div class="wrap letter"><div class="lp">'+(p2?'<img src="'+e(p2)+'" alt="'+e(a.name)+'">':person)+'</div><div><span class="ey">A Note From '+first+'</span><div class="paper">'+
+       a.letter.map(function(p){return '<p>'+e(p)+'</p>';}).join('')+'<div class="sig">'+e(a.name)+'</div><div class="sigt">'+e(a.title)+', US Retirement Educators</div></div></div></div></section>';}
+  if(a.story&&a.story.length)h+='<section><div class="wrap story"><div><span class="ey">My Story</span><h2>Why I do this work</h2>'+(a.quote?'<blockquote>\u201c'+e(a.quote)+'\u201d</blockquote>':'')+'</div><div class="tx">'+a.story.map(function(p){return '<p>'+e(p)+'</p>';}).join('')+'</div></div></section>';
+  if(a.reasons&&a.reasons.length)h+='<section class="alt"><div class="wrap"><span class="ey">Why Families Choose '+first+'</span><h2>What you can count on</h2><div class="reasons">'+a.reasons.map(function(r,i){return '<div class="rs"><div class="rn">0'+(i+1)+'</div><h3>'+e(r[0])+'</h3><p>'+e(r[1])+'</p></div>';}).join('')+'</div></div></section>';
+  if(a.testimonials&&a.testimonials.length)h+='<section><div class="wrap"><span class="ey">Client Stories</span><h2>What clients say</h2><div class="cards">'+a.testimonials.map(function(t){return '<div class="tq"><p>\u201c'+e(t[0])+'\u201d</p><b>'+e(t[1])+'</b></div>';}).join('')+'</div></div></section>';
+  h+='<section class="alt"><div class="wrap"><span class="ey">What to Expect</span><h2>A conversation with '+first+'</h2><div class="steps">'+
+     '<div class="step"><div class="n">1</div><h3>Get to know you</h3><p>'+first+' learns where you are today and what you want retirement to look like.</p></div>'+
+     '<div class="step"><div class="n">2</div><h3>Review your numbers</h3><p>Together you\u2019ll look at your income, savings, and the risks that matter most to you.</p></div>'+
+     '<div class="step"><div class="n">3</div><h3>Leave with clarity</h3><p>You\u2019ll get a plain-English picture of your options. No cost, and no obligation.</p></div>'+
+     '</div><div class="prep"><h3>Helpful to have handy</h3><ul><li>Recent retirement account statements (401k, IRA)</li><li>Your Social Security estimate</li><li>A rough idea of your monthly expenses</li><li>Any existing annuity or life insurance policies</li><li>Your spouse or partner, if they\u2019re part of the plan</li><li>Your questions. No question is too small.</li></ul></div></div></section>';
+  if((a.personal&&a.personal.length)||(a.interests&&a.interests.length))h+='<section><div class="wrap pers"><span class="ey">Off the Clock</span><h2>A little more about '+first+'</h2>'+(a.personal||[]).map(function(p){return '<p>'+e(p)+'</p>';}).join('')+((a.interests&&a.interests.length)?'<div class="tags">'+a.interests.map(function(t){return '<span>'+e(t)+'</span>';}).join('')+'</div>':'')+'</div></section>';
+  h+='<section class="final"><div class="wrap"><h2>Looking forward to meeting you</h2><div class="sig">'+e(a.name)+'</div><a class="btn" href="'+e(book)+'">Schedule a call with '+first+'</a><small>Already scheduled? You\u2019re all set. Need a different time? Use the link in your confirmation.</small></div></section>';
   h+='<div class="wrap disc">Annuity guarantees are backed by the financial strength and claims-paying ability of the issuing insurance company. Annuities are not bank deposits, are not FDIC insured, and are not insured by any federal government agency.</div>';
   document.getElementById('ua-root').innerHTML=h;
 })();
