@@ -17,7 +17,7 @@ Shared code for US Retirement Educators' GoHighLevel (GHL) pages. Each GHL page 
 
 ## Website (GHL site "USRE Copy", usretirementeducators.org)
 - Each website page (Home /home-279180, /growth, /income, /roth-conversion, /carriers, /disclosures) is one pasted Custom HTML block with its own copy of the header menu (.usre-nav desktop, .usre-mnav mobile). Those blocks are not in this repo yet.
-- assets/nav.js adds extra menu links on every page. It loads from Website Settings > Body tracking code. To add or change a menu link, edit LINKS in assets/nav.js and push; no GHL change needed. The same file adds a credentials badge row under the home page hero (SHOW flag turns it off).
+- assets/nav.js adds extra menu links on every page. It loads from Website Settings > Body tracking code. To add or change a menu link, edit LINKS in assets/nav.js and push; no GHL change needed. The same file adds a looping badge strip under the home page stats bar (SHOW flag turns it off; artwork generated per badge in ART).
 - Meet the Team page path: /meet-the-team-8622. Agent pages: /<key>, e.g. /jeremy-smith.
 
 ## Working rules
