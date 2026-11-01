@@ -147,7 +147,43 @@
   // Any section whose field is empty is hidden.
   var AGENTS={
     'jeremy-smith':{
-      name:'Jeremy Smith',title:'Title',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
+      name:'Jeremy Smith',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
+      headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
+    },
+    'joshua-welsh':{
+      name:'Joshua Welsh',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
+      headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
+    },
+    'misty-plathe':{
+      name:'Misty Plathe',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
+      headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
+    },
+    'richard-duese':{
+      name:'Richard Duese',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
+      headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
+    },
+    'august-marcello-iii':{
+      name:'August Marcello III',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
+      headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
+    },
+    'nathan-burks':{
+      name:'Nathan Burks',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
+      headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
+    },
+    'katherine-leavitt':{
+      name:'Katherine Leavitt',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
+      headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
+    },
+    'zach-allen':{
+      name:'Zach Allen',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
+      headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
+    },
+    'charissa-lawal':{
+      name:'Charissa Lawal',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
+      headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
+    },
+    'christian-weisenburger':{
+      name:'Christian Weisenburger',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
       headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
     },
     sample:{
@@ -204,7 +240,7 @@
   var h='',hasVid=!!a.video,hasLetter=!!(a.letter&&a.letter.length);
   var msg=hasVid?'Watch '+first+'\u2019s message':hasLetter?'Read '+first+'\u2019s note':'';
   h+='<div class="hero"><div class="wrap"><div class="ph">'+(a.photo?'<img src="'+e(a.photo)+'" alt="'+e(a.name)+'">':person)+'</div><div>'+
-     '<span class="ey">US Retirement Educators</span><h1>'+e(a.name)+'</h1><div class="ti">'+e(a.title)+'</div>'+
+     '<span class="ey">US Retirement Educators</span><h1>'+e(a.name)+'</h1>'+(a.title?'<div class="ti">'+e(a.title)+'</div>':'')+
      (a.headline?'<p class="hl">'+e(a.headline)+'</p>':'')+
      '<div class="acts">'+(msg?'<a class="btn" href="#ua-msg">'+msg+'</a>':'')+'<a class="'+(msg?'lnk':'btn')+'" href="'+e(book)+'">Schedule a call with '+first+'</a></div>'+
      '</div></div></div>';
