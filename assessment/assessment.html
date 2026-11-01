@@ -1,6 +1,6 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-:root{--nv:#1a2f4e;--nd:#0f1e33;--ch:#2d3748;--gd:#c9a84c;--ow:#f8fafc;--br:#e2e8f0;--mu:#64748b}
+:root{--nv:#1a2f4e;--nd:#0F2347;--ch:#344054;--gd:#c9a84c;--gdk:#9a7724;--gdl:#f7f0dc;--ow:#f6f7f9;--br:#e6e9ef;--mu:#5d6b82;--ink:#101828}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',Arial,sans-serif;background:var(--ow);color:var(--ch)}
 form{display:none!important}
@@ -93,6 +93,39 @@ form{display:none!important}
 .anc:hover .see{text-decoration:underline}
 .see{font-family:'Inter',Arial,sans-serif;font-size:11px;font-weight:700;color:#1d4ed8;white-space:nowrap}
 .vi.flash{box-shadow:0 0 0 3px #93c5fd;transition:box-shadow .3s}
+/* ===== Site design refresh (look only; questions, scoring and webhook unchanged) ===== */
+body{background:linear-gradient(180deg,#fbf9f3 0px,#f6f7f9 520px)}
+#rw{max-width:740px;padding:36px 20px 64px}
+.abr{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:26px}
+.abr img{width:44px;height:44px;border-radius:50%;box-shadow:0 4px 12px rgba(15,35,71,.18)}
+.abr span{font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:20px;color:var(--nd)}
+.abr em{font-style:normal;color:var(--gdk)}
+.rh{border-radius:20px 20px 0 0;padding:16px 30px}
+.pw{padding:12px 30px 16px;margin-bottom:0;border-bottom:2px solid var(--gd)}
+.pt{height:6px}
+.qc{border-radius:0 0 20px 20px;padding:44px 50px 40px;box-shadow:0 30px 70px rgba(15,35,71,.12);border:1px solid var(--br);border-top:0}
+.qcat{background:var(--gdl);color:var(--nd);border-radius:999px;padding:6px 13px;font-size:10.5px;letter-spacing:1.6px}
+.qt{font-size:26px;font-weight:800;letter-spacing:-.5px;line-height:1.3;color:var(--ink)}
+.ab{background:#fff;border:1.5px solid var(--br);border-radius:14px;padding:17px 20px;font-weight:500;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.ab:hover{border-color:#c9cfdb;background:#fafbfc;transform:translateY(-1px);box-shadow:0 6px 16px rgba(15,35,71,.08)}
+.ab.picked{border-color:var(--gd);background:#fffaf0;box-shadow:0 0 0 3px rgba(201,168,76,.18)}
+.ad{border:2px solid #c9cfdb}
+.ab.picked .ad{box-shadow:inset 0 0 0 3px #fff}
+.ni,.ob input{background:#fff;border:1.5px solid var(--br);border-radius:14px}
+.ni:focus,.ob input:focus{border-color:var(--gd);box-shadow:0 0 0 3px rgba(201,168,76,.18)}
+.oc{border-radius:20px;box-shadow:0 30px 70px rgba(15,35,71,.12)}
+.oh{padding:34px 44px;border-bottom:2px solid var(--gd)}
+.oh h2{font-size:27px;font-weight:800;letter-spacing:-.5px}
+.ob2{border-radius:999px;padding:6px 14px}
+.ob{padding:34px 44px 30px}
+.rsh{border-radius:20px 20px 0 0}
+.rb{border-left:1px solid var(--br);border-right:1px solid var(--br);box-shadow:0 30px 70px rgba(15,35,71,.10)}
+.bx{background:#fff;border-radius:14px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.vi{border-radius:0 12px 12px 0}
+.cb{border-radius:0 0 20px 20px;border-top:2px solid var(--gd)}
+.ch2{font-weight:800;letter-spacing:-.4px}
+.ca{border-radius:999px}
+.sent{border-radius:20px}
 @media print{
   @page{margin:12mm}
   body *{visibility:hidden}
@@ -108,10 +141,11 @@ form{display:none!important}
   .vct{break-after:avoid;page-break-after:avoid}
   #res{animation:none!important}
 }
-@media(max-width:600px){#rw{padding:24px 12px}.bx{padding:14px 16px}.bxt{letter-spacing:1px}.br2{font-size:13px}.br2.act{font-size:13px}.anc .see{flex-basis:100%;order:3}.qc,.ob,.rb,.cb{padding:28px 18px}.qt{font-size:15px}.ab{font-size:14px}.oh{padding:24px 22px}}
+@media(max-width:600px){#rw{padding:22px 12px 40px}.abr{margin-bottom:18px}.abr img{width:38px;height:38px}.abr span{font-size:17px}.rh,.pw{padding-left:18px;padding-right:18px}.oh h2{font-size:22px}.bx{padding:14px 16px}.bxt{letter-spacing:1px}.br2{font-size:13px}.br2.act{font-size:13px}.anc .see{flex-basis:100%;order:3}.qc,.ob,.rb,.cb{padding:28px 18px}.qt{font-size:20px}.ab{font-size:15px;padding:15px 16px}.oh{padding:24px 22px}}
 </style>
 
 <div id="rw">
+  <div class="abr"><img src="https://joshualwelsh.github.io/usre-site/assets/usre-logo.png" alt=""><span>US <em>Retirement</em> Educators</span></div>
   <div id="qs">
     <div class="rh"><div class="rl">Retirement Risk Diagnostic</div><div class="rs">&#128274; Confidential Assessment</div></div>
     <div class="pw">
