@@ -10,7 +10,8 @@
 #usre-team h1{font-family:'Inter',Arial,sans-serif;font-size:46px;line-height:1.1;font-weight:800;margin-bottom:14px;color:#fff;letter-spacing:-1.1px}
 #usre-team h1 em{font-style:normal;color:var(--gd)}
 #usre-team .hd p{font-size:18px;color:#b8c2d1;max-width:640px;margin:0 auto}
-#usre-team .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:72px 0 84px}
+#usre-team .grid{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;padding:72px 0 84px}
+#usre-team .grid>.m{flex:0 0 calc((100% - 72px)/4)}
 #usre-team .m{background:#fff;border:1px solid var(--br);border-radius:18px;overflow:hidden;box-shadow:0 1px 2px rgba(15,30,51,.04);transition:box-shadow .2s,transform .2s}
 #usre-team .m:hover{box-shadow:0 18px 40px rgba(15,30,51,.10);transform:translateY(-2px)}
 #usre-team .ph{aspect-ratio:4/5;background:linear-gradient(160deg,var(--nv),var(--nd));display:flex;align-items:center;justify-content:center;overflow:hidden}
@@ -21,8 +22,8 @@
 #usre-team .in .t{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gdk);margin-bottom:12px}
 #usre-team .in p{font-size:15px;color:var(--mu)}
 #usre-team .vp{display:inline-block;margin-top:14px;font-size:14px;font-weight:700;color:var(--nd);text-decoration:none;border-bottom:2px solid var(--gd);padding-bottom:2px}
-@media(max-width:960px){#usre-team .grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){#usre-team .grid{grid-template-columns:1fr}#usre-team h1{font-size:32px}#usre-team .hd{padding:52px 0 48px}#usre-team .grid{padding:48px 0 60px;gap:22px}}
+@media(max-width:960px){#usre-team .grid>.m{flex-basis:calc((100% - 24px)/2)}}
+@media(max-width:600px){#usre-team .grid>.m{flex-basis:100%}#usre-team h1{font-size:32px}#usre-team .hd{padding:52px 0 48px}#usre-team .grid{padding:48px 0 60px;gap:22px}}
 </style>
 <div class="hd"><div class="wrap">
   <div class="eyebrow">Meet the Team</div>
@@ -34,18 +35,25 @@
 (function(){
   // TEAM: one entry per person, shown in this order.
   // photo: image URL (leave '' to show the placeholder). slug: the agent's page path, e.g. 'jeremy-smith'.
+  // profile:true shows the "View profile" link (turn on once that agent's page is filled in).
   var TEAM=[
-    {name:'Jeremy Smith',title:'Title',photo:'',bio:'Short bio coming soon.',slug:'jeremy-smith'},
-    {name:'Team Member',title:'Title',photo:'',bio:'Short bio coming soon.',slug:''},
-    {name:'Team Member',title:'Title',photo:'',bio:'Short bio coming soon.',slug:''},
-    {name:'Team Member',title:'Title',photo:'',bio:'Short bio coming soon.',slug:''}
+    {name:'Jeremy Smith',title:'',photo:'',bio:'',slug:'jeremy-smith',profile:false},
+    {name:'Joshua Welsh',title:'',photo:'',bio:'',slug:'joshua-welsh',profile:false},
+    {name:'Misty Plathe',title:'',photo:'',bio:'',slug:'misty-plathe',profile:false},
+    {name:'Richard Duese',title:'',photo:'',bio:'',slug:'richard-duese',profile:false},
+    {name:'August Marcello III',title:'',photo:'',bio:'',slug:'august-marcello-iii',profile:false},
+    {name:'Nathan Burks',title:'',photo:'',bio:'',slug:'nathan-burks',profile:false},
+    {name:'Katherine Leavitt',title:'',photo:'',bio:'',slug:'katherine-leavitt',profile:false},
+    {name:'Zach Allen',title:'',photo:'',bio:'',slug:'zach-allen',profile:false},
+    {name:'Charissa Lawal',title:'',photo:'',bio:'',slug:'charissa-lawal',profile:false},
+    {name:'Christian Weisenburger',title:'',photo:'',bio:'',slug:'christian-weisenburger',profile:false}
   ];
   var ph='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4.2"/><path d="M3.5 21c.9-4.4 4.3-7 8.5-7s7.6 2.6 8.5 7z"/></svg>';
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   var g=document.getElementById('usre-team-grid');if(!g)return;
   g.innerHTML=TEAM.map(function(p){
     return '<div class="m"><div class="ph">'+(p.photo?'<img src="'+esc(p.photo)+'" alt="'+esc(p.name)+'">':ph)+'</div>'+
-      '<div class="in"><h3>'+esc(p.name)+'</h3><div class="t">'+esc(p.title)+'</div><p>'+esc(p.bio)+'</p>'+(p.slug?'<a class="vp" href="'+'/'+encodeURIComponent(p.slug)+'">View profile &rarr;</a>':'')+'</div></div>';
+      '<div class="in"><h3>'+esc(p.name)+'</h3>'+(p.title?'<div class="t">'+esc(p.title)+'</div>':'')+(p.bio?'<p>'+esc(p.bio)+'</p>':'')+(p.slug&&p.profile?'<a class="vp" href="'+'/'+encodeURIComponent(p.slug)+'">View profile &rarr;</a>':'')+'</div></div>';
   }).join('');
 })();
 </script>
