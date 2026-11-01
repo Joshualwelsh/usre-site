@@ -11,7 +11,7 @@ Shared code for US Retirement Educators' GoHighLevel (GHL) pages. Each GHL page 
 
 ## Pages
 - assessment: Retirement Risk Diagnostic (19 questions, 248-point max). Posts to the GHL inbound webhook in the file.
-- team: Meet the Team page. Edit the TEAM list in the script (name, title, photo URL, bio). Photos go in assets/team/.
+- team: Meet the Team page (shared site design). Edit the TEAM list in the script (name, title, photo URL, bio, slug). Each card links to /slug. Photos go in assets/team/.
 - agent: Agent profile page. Each agent has a GHL page at /<key> (e.g. /jeremy-smith) with the same embed; the path picks the AGENTS entry. Team cards link there via slug. Badges: BADGES library + EVERY_AGENT in the script; each agent lists badge keys in badges:[]. Two templates chosen automatically: video set = video section; video empty = letter section (letter + photo2). Page must work pre- and post-booking (no booking-specific wording).
 - landing: Ethos-style hook page for the assessment funnel. ASSESSMENT_URL at the bottom of the script sets where every button goes (currently the TEST funnel, /assessment-5064).
 
