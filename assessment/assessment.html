@@ -126,6 +126,21 @@ body{background:linear-gradient(180deg,#fbf9f3 0px,#f6f7f9 520px)}
 .ch2{font-weight:800;letter-spacing:-.4px}
 .ca{border-radius:999px}
 .sent{border-radius:20px}
+/* Mobile: calmer question screens (look only) */
+@media(max-width:600px){
+  .abr{margin-bottom:14px}.abr span{font-size:15px}.abr img{width:32px;height:32px}
+  #qs .rh{display:none}
+  #qs .pw{background:#fff;border:1px solid var(--br);border-bottom:0;border-radius:20px 20px 0 0;padding:16px 18px 0}
+  #qs .pm{display:none}
+  #qs .pt{background:#eef0f4;height:5px}
+  .qcat{display:none}
+  .qc{border-radius:0 0 20px 20px;padding:18px 18px 24px;box-shadow:0 18px 40px rgba(15,35,71,.08)}
+  .qn{font-size:12px;font-weight:600;color:var(--gdk);letter-spacing:.3px;margin-bottom:8px}
+  .qt{margin-bottom:8px}
+  .qno{margin-bottom:18px}
+  .ab{margin-bottom:9px;box-shadow:none}
+  .bk{margin-top:10px}
+}
 @media print{
   @page{margin:12mm}
   body *{visibility:hidden}
