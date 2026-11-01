@@ -1,5 +1,30 @@
 <!--@site-->
 <style>
+/* home: hero report card */
+.usre-site .us-hero{overflow:hidden}
+.usre-site .us-rep-wrap{position:relative;max-width:460px;margin-left:auto;width:100%}
+.usre-site .us-rep-wrap .us-report{position:relative;z-index:2;margin:0}
+.usre-site .us-blob{position:absolute;border-radius:50%;z-index:0}
+.usre-site .us-blob.b1{width:340px;height:340px;right:-70px;top:-50px;background:radial-gradient(circle at 30% 30%,#1a2f4e,#0F2347);opacity:.95}
+.usre-site .us-blob.b2{width:180px;height:180px;left:-60px;bottom:-40px;background:radial-gradient(circle at 40% 40%,#e6c873,#c9a84c);opacity:.9}
+.usre-site .us-report .rh{padding:40px 26px 24px}
+.usre-site .us-report .gauge{display:block;width:180px;margin:12px auto -6px}
+.usre-site .us-report .needle{transform-origin:100px 100px;animation:usNeedle 1.4s cubic-bezier(.2,.8,.2,1) both .3s}
+@keyframes usNeedle{from{transform:rotate(-120deg)}to{transform:rotate(0)}}
+.usre-site .us-float{position:absolute;z-index:3;display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:12px 16px 12px 12px;box-shadow:0 16px 40px rgba(15,35,71,.18);animation:usFloat 5s ease-in-out infinite}
+.usre-site .us-float b{display:block;font-size:14px;color:var(--ink);line-height:1.25}
+.usre-site .us-float small{display:block;font-size:12.5px;color:var(--mu);line-height:1.3}
+.usre-site .us-float .fi{width:38px;height:38px;border-radius:10px;background:var(--gdl);color:var(--gdk);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.usre-site .us-float .fi svg{width:20px;height:20px}
+.usre-site .us-float.f1{left:-56px;top:-26px}
+.usre-site .us-float.f2{right:-36px;bottom:-26px;animation-delay:-2.5s}
+.usre-site .us-rep-wrap .us-report .tag{padding-bottom:44px}
+.usre-site .us-rep-wrap{margin-top:26px;margin-bottom:26px}
+@keyframes usFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(max-width:1180px){.usre-site .us-float.f1{left:-24px}.usre-site .us-float.f2{right:-14px}}
+@media(max-width:900px){.usre-site .us-rep-wrap{margin:20px auto 0}.usre-site .us-blob.b1{width:260px;height:260px;right:-40px}.usre-site .us-float.f1{left:-8px}.usre-site .us-float.f2{right:-8px}}
+@media(max-width:600px){.usre-site .us-float{padding:9px 12px 9px 9px}.usre-site .us-float .fi{width:32px;height:32px}.usre-site .us-float b{font-size:13px}.usre-site .us-float small{display:none}.usre-site .us-float.f1{top:-22px}.usre-site .us-float.f2{bottom:-22px}.usre-site .us-blob.b2{left:-30px}}
+@media(prefers-reduced-motion:reduce){.usre-site .us-float,.usre-site .us-report .needle{animation:none}}
 /* home: badge strip */
 .usre-site .us-badges{padding:44px 0 40px;border-bottom:1px solid var(--br);text-align:center;overflow:hidden}
 .usre-site .us-badges h2{font-size:24px;letter-spacing:-.3px;margin-bottom:26px;padding:0 20px}
@@ -23,15 +48,20 @@
     <a class="us-btn" data-href="assess">Take the Free 4-Minute Risk Assessment <i data-ic="arrow"></i></a>
     <div class="us-trust"><span><i data-ic="check"></i>100% free</span><span><i data-ic="clock"></i>4 minutes</span><span><i data-ic="lock"></i>Confidential</span><span><i data-ic="bolt"></i>Instant results</span></div>
   </div>
-  <div class="us-report" aria-label="Sample retirement risk report">
-    <div class="rh"><div class="rl">Retirement Risk Analysis</div><div class="rs">164<span>/248</span></div><div class="rv">High Risk</div></div>
-    <div class="rb">
-      <div class="row"><span>At risk in a 30% market drop</span><b>&minus;$146,000</b></div>
-      <div class="row"><span>Amount to move into a safe product</span><b>$203,000</b></div>
-      <div class="row"><span>Monthly income gap</span><b>$3,000 / mo</b></div>
-      <div class="row"><span>Long-term care exposure</span><b>$156K&ndash;$473K</b></div>
+  <div class="us-rep-wrap">
+    <div class="us-blob b1" aria-hidden="true"></div><div class="us-blob b2" aria-hidden="true"></div>
+    <div class="us-report" aria-label="Sample retirement risk report">
+      <div class="rh"><div class="rl">Retirement Risk Analysis</div><svg class="gauge" viewBox="0 0 200 112" aria-hidden="true"><path d="M20 100A80 80 0 0 1 180 100" stroke="rgba(255,255,255,.08)" stroke-width="14" fill="none"/><path d="M20.0 100.0A80 80 0 0 1 42.5 44.4" stroke="#3f8f6b" stroke-width="14" fill="none"/><path d="M44.4 42.5A80 80 0 0 1 98.6 20.0" stroke="#c9a84c" stroke-width="14" fill="none"/><path d="M101.4 20.0A80 80 0 0 1 155.6 42.5" stroke="#d9822b" stroke-width="14" fill="none"/><path d="M157.5 44.4A80 80 0 0 1 180.0 100.0" stroke="#c2412d" stroke-width="14" fill="none"/><line class="needle" x1="100" y1="100" x2="130.1" y2="45.8" stroke="#fff" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="100" r="8" fill="#fff"/><circle cx="100" cy="100" r="3.5" fill="#0F2347"/></svg><div class="rs">164<span>/248</span></div><div class="rv">High Risk</div></div>
+      <div class="rb">
+        <div class="row"><span>At risk in a 30% market drop</span><b>&minus;$146,000</b></div>
+        <div class="row"><span>Amount to move into a safe product</span><b>$203,000</b></div>
+        <div class="row"><span>Monthly income gap</span><b>$3,000 / mo</b></div>
+        <div class="row"><span>Long-term care exposure</span><b>$156K&ndash;$473K</b></div>
+      </div>
+      <div class="tag">Sample report for illustration only</div>
     </div>
-    <div class="tag">Sample report for illustration only</div>
+    <div class="us-float f1"><span class="fi"><i data-ic="chat"></i></span><div><b>Report sent to your phone</b><small>By text and email</small></div></div>
+    <div class="us-float f2"><span class="fi"><i data-ic="clock"></i></span><div><b>Takes 4 minutes</b><small>Free &amp; confidential</small></div></div>
   </div>
 </div></div>
 
