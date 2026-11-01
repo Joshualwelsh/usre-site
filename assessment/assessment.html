@@ -126,6 +126,34 @@ body{background:linear-gradient(180deg,#fbf9f3 0px,#f6f7f9 520px)}
 .ch2{font-weight:800;letter-spacing:-.4px}
 .ca{border-radius:999px}
 .sent{border-radius:20px}
+/* Results page design pass (look only) */
+.rsh{background:#0F2347!important;padding:30px 32px 30px;border-bottom:2px solid var(--gd)}
+.rsl{color:var(--gd);letter-spacing:1.8px;margin-bottom:6px}
+.rsh .gauge{display:block;width:190px;margin:4px auto -4px}
+.rsh .needle{animation:rNeedle 1.4s cubic-bezier(.2,.8,.2,1) both .2s;transform-box:view-box}
+@keyframes rNeedle{from{opacity:.0}to{opacity:1}}
+.rsh .sb{font-size:60px;font-weight:800;letter-spacing:-1.5px;color:#fff;line-height:1;margin-top:6px}
+.rsh .sb span{font-size:22px;font-weight:600;color:#9fb0c8}
+.rpill{display:inline-block;margin-top:12px;padding:7px 16px;border-radius:999px;color:#fff;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:9px;vertical-align:1px}
+.br2.act{background:#fbf7ec;margin:0 -10px;padding:9px 10px;border-radius:8px;border-bottom-color:transparent}
+.vct{color:var(--ink);border-bottom:1px solid var(--br)}
+.vi{background:#fff;border:1px solid var(--br);border-left:3px solid #c2412d;border-radius:0 14px 14px 0;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.vic{width:30px;height:30px;border-radius:50%;background:#0F2347;color:var(--gd);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:0}
+.vtl{color:#b42318}
+.rf{background:#fbf7ec;border-left:3px solid var(--gd);border-radius:0 10px 10px 0}
+.rf-tag{color:var(--gdk)}
+.rf-txt{color:var(--ink)}
+.see{color:var(--gdk)}
+.vi.flash{box-shadow:0 0 0 3px rgba(201,168,76,.55)}
+.sent-ic{width:52px;height:52px;border-radius:50%;background:rgba(201,168,76,.15);color:var(--gd);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.sent-ic svg{width:26px;height:26px}
+@media(max-width:600px){.rsh{padding:24px 18px}.rsh .gauge{width:160px}.rsh .sb{font-size:50px}.br2.act{margin:0 -6px;padding:8px 6px}}
+/* Quieter "See why" links: a small round arrow instead of text */
+.anc{flex-wrap:nowrap}
+.see,.anc .see{flex:0 0 22px!important;order:0!important;width:22px;height:22px;border-radius:50%;background:#f7f0dc;font-size:0!important;position:relative;text-decoration:none!important}
+.see:after{content:'';position:absolute;left:7px;top:5px;width:6px;height:6px;border-right:2px solid #9a7724;border-bottom:2px solid #9a7724;transform:rotate(45deg)}
+.anc:hover .see{background:#efe2bd}
 /* Mobile: calmer question screens (look only) */
 @media(max-width:600px){
   .abr{margin-bottom:14px}.abr span{font-size:15px}.abr img{width:32px;height:32px}
@@ -522,16 +550,16 @@ function jumpTo(id){
 function buildResults(name){
   var b=BR.find(function(x){return score>=x.mn&&score<=x.mx;});
   var rows=[
-    {lb:'\ud83d\udd34 Critical Risk',mn:206,mx:248,rg:'206\u2013248'},
-    {lb:'\ud83d\udd34 High Risk',mn:161,mx:205,rg:'161\u2013205'},
-    {lb:'\u26a0\ufe0f Elevated Risk',mn:107,mx:160,rg:'107\u2013160'},
-    {lb:'\ud83d\udd35 Moderate Risk',mn:58,mx:106,rg:'58\u2013106'},
-    {lb:'\u2705 Solid Foundation',mn:0,mx:57,rg:'0\u201357'}
+    {lb:'Critical Risk',dc:'#7f1d1d',mn:206,mx:248,rg:'206\u2013248'},
+    {lb:'High Risk',dc:'#c2412d',mn:161,mx:205,rg:'161\u2013205'},
+    {lb:'Elevated Risk',dc:'#d9822b',mn:107,mx:160,rg:'107\u2013160'},
+    {lb:'Moderate Risk',dc:'#c9a84c',mn:58,mx:106,rg:'58\u2013106'},
+    {lb:'Solid Foundation',dc:'#3f8f6b',mn:0,mx:57,rg:'0\u201357'}
   ];
   var brH=rows.map(function(r){
     var act=score>=r.mn&&score<=r.mx;
     return '<div class="br2'+(act?' act':'')+'" style="'+(act?'color:'+b.co+';':'')+'">'
-      +'<span>'+r.lb+(act?' \u2190 Your Score':'')+'</span>'
+      +'<span><i class="dot" style="background:'+r.dc+'"></i>'+r.lb+(act?' \u2190 Your Score':'')+'</span>'
       +'<span class="bp">'+r.rg+' pts</span></div>';
   }).join('');
   var vecs=detectVectors(picks);
@@ -564,18 +592,19 @@ function buildResults(name){
   var vH='';
   if(vecs.length){
     vH='<div class="vct">Your Risk Report \u2014 '+vecs.length+' Active Risk Factor'+(vecs.length>1?'s':'')+'</div>';
-    vecs.forEach(function(v){
+    vecs.forEach(function(v,vi){
       var fH='';
       if(v.finding)fH='<div class="rf"><div class="rf-tag">'+v.finding.tag+'</div><div class="rf-txt">'+v.finding.txt+'</div></div>';
-      vH+='<div class="vi"'+(v.id?' id="'+v.id+'"':'')+'><div class="vic">'+v.ic+'</div><div style="flex:1">'+fH+'<div class="vit">'+v.tt+'</div><div class="vtl">'+v.tl+'</div><div class="vid">'+v.ds+'</div></div></div>';
+      vH+='<div class="vi"'+(v.id?' id="'+v.id+'"':'')+'><div class="vic">'+(vi+1)+'</div><div style="flex:1">'+fH+'<div class="vit">'+v.tt+'</div><div class="vtl">'+v.tl+'</div><div class="vid">'+v.ds+'</div></div></div>';
     });
   }
   document.getElementById('res').innerHTML=
-    '<div class="rsh" style="background:'+b.bg+'">'
+    '<div class="rsh">'
       +'<div class="rsl">Retirement Risk Analysis</div>'
-      +'<div class="rsv">'+b.em+' '+b.lb+'</div>'
-      +'<div class="scr"><div class="sb">'+score+'<span>/248</span></div>'
-      +'<div><div class="sml">Risk Score</div><div class="smv">'+b.lb+'</div></div></div>'
+      +'<svg class="gauge" viewBox="0 0 200 112" aria-hidden="true"><path d="M20 100A80 80 0 0 1 180 100" stroke="rgba(255,255,255,.08)" stroke-width="14" fill="none"/><path d="M20.0 100.0A80 80 0 0 1 42.5 44.4" stroke="#3f8f6b" stroke-width="14" fill="none"/><path d="M44.4 42.5A80 80 0 0 1 98.6 20.0" stroke="#c9a84c" stroke-width="14" fill="none"/><path d="M101.4 20.0A80 80 0 0 1 155.6 42.5" stroke="#d9822b" stroke-width="14" fill="none"/><path d="M157.5 44.4A80 80 0 0 1 180.0 100.0" stroke="#c2412d" stroke-width="14" fill="none"/>'
+      +'<line class="needle" x1="100" y1="100" x2="100" y2="38" stroke="#fff" stroke-width="4" stroke-linecap="round" transform="rotate('+(Math.min(score,248)/248*180-90).toFixed(1)+' 100 100)"/><circle cx="100" cy="100" r="8" fill="#fff"/><circle cx="100" cy="100" r="3.5" fill="#0F2347"/></svg>'
+      +'<div class="sb">'+score+'<span>/248</span></div>'
+      +'<div class="rpill" style="background:'+b.co+'">'+b.lb+'</div>'
     +'</div>'
     +'<div class="rb">'
       +'<div class="sl">Your Risk Level Breakdown</div>'
@@ -589,10 +618,10 @@ function buildResults(name){
     +'</div>'
     +'<div class="cb">'
       +(viewingSaved
-        ?'<div class="sent-ic">\ud83d\udcc4</div>'
+        ?'<div class="sent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></div>'
           +'<h3 class="ch2">Your Saved Retirement Risk Report</h3>'
           +'<p class="cs" style="margin-bottom:0">Keep this link to revisit your results anytime, and review them with your advisor.</p>'
-        :'<div class="sent-ic">\u2709\ufe0f</div>'
+        :'<div class="sent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>'
           +'<h3 class="ch2">Your Results Are on the Way</h3>'
           +'<p class="cs" style="margin-bottom:0">We\u2019ve sent a copy of your Retirement Risk Report to <b style="color:#fff;white-space:nowrap">'+sentEmail+'</b> and by text to <b style="color:#fff;white-space:nowrap">'+sentPhone+'</b>. Keep it for your records and review it with your advisor.</p>')
     +'</div>';
