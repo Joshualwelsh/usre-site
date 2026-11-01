@@ -20,6 +20,7 @@ Shared code for US Retirement Educators' GoHighLevel (GHL) pages. Each GHL page 
 - Website pages in this repo: home (/home-279180), growth, income, roth-conversion, carriers, disclosures; team and agent also use the shared header/footer. Disclosures text is legal copy: keep it verbatim.
 - Until a GHL page is swapped to its embed, it still runs its old pasted Custom HTML (classes .usre-nav/.usre-hero).
 - assets/nav.js (legacy, for old pasted pages only) adds extra menu links on every page. It loads from Website Settings > Body tracking code. To add or change a menu link, edit LINKS in assets/nav.js and push; no GHL change needed. The same file adds a looping badge strip under the home page stats bar (SHOW flag turns it off; artwork generated per badge in ART).
+- SEO titles/descriptions are set per page in GHL (page builder > SEO & AI search optimization > Content), not in this repo. Set for home, growth, income, roth-conversion, carriers, disclosures, meet-the-team.
 - Meet the Team page path: /meet-the-team-8622. Agent pages: /<key>, e.g. /jeremy-smith.
 
 ## Working rules
