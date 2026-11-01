@@ -49,6 +49,17 @@
   });
   root.querySelectorAll('[data-year]').forEach(function(el){el.textContent=new Date().getFullYear();});
   root.querySelectorAll('.us-nav>a,.us-dd-m a,.us-mnav a').forEach(function(a){var p=(a.getAttribute('href')||'').replace(/\/+$/,'');if(p&&p===path)a.classList.add('on');});
+  // Full width: GHL places custom code inside a centered, padded column. Stretch the page edge to edge.
+  (function(){
+    var c=root,el=c.parentElement;
+    for(var k=0;el&&el!==document.body&&k<8;k++,el=el.parentElement){var cs=getComputedStyle(el);if(parseFloat(cs.paddingTop)||parseFloat(cs.paddingBottom)){el.style.paddingTop='0';el.style.paddingBottom='0';}}
+    function bleed(){
+      c.style.position='relative';c.style.left='0';c.style.width='';c.style.maxWidth='none';
+      var W=document.documentElement.clientWidth,r=c.getBoundingClientRect();
+      if(Math.abs(r.width-W)>1||Math.abs(r.left)>1){c.style.width=W+'px';c.style.left=(-r.left)+'px';}
+    }
+    bleed();window.addEventListener('resize',bleed);window.addEventListener('load',bleed);setTimeout(bleed,800);
+  })();
   var hdr=root.querySelector('.us-hdr');
   root.querySelector('.us-burger').addEventListener('click',function(){hdr.classList.toggle('open');});
   root.querySelectorAll('.us-mnav a').forEach(function(a){a.addEventListener('click',function(){hdr.classList.remove('open');});});
