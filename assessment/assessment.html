@@ -154,6 +154,15 @@ body{background:linear-gradient(180deg,#fbf9f3 0px,#f6f7f9 520px)}
 .see,.anc .see{flex:0 0 22px!important;order:0!important;width:22px;height:22px;border-radius:50%;background:#f7f0dc;font-size:0!important;position:relative;text-decoration:none!important}
 .see:after{content:'';position:absolute;left:7px;top:5px;width:6px;height:6px;border-right:2px solid #9a7724;border-bottom:2px solid #9a7724;transform:rotate(45deg)}
 .anc:hover .see{background:#efe2bd}
+/* Key rows with dropdown details */
+.bx .br2.kr{margin:0 -10px 6px;padding:12px 10px}
+.bx .br2.kr+.det+.br2.kr{margin-top:8px}
+.det{display:none;margin:-2px 0 6px;padding:2px 14px 6px;border-left:2px solid #efe2bd}
+.det .br2{font-size:12.5px}
+.det .br2:last-child{border-bottom:0}
+.kr .see{transition:transform .2s}
+.kr .anc[aria-expanded="true"] .see{transform:rotate(180deg)}
+@media print{.det{display:block!important}.see{display:none!important}}
 /* Mobile: calmer question screens (look only) */
 @media(max-width:600px){
   .abr{margin-bottom:14px}.abr span{font-size:15px}.abr img{width:32px;height:32px}
@@ -570,25 +579,37 @@ function buildResults(name){
     else inner='<span>'+label+'</span><span class="val">'+val+'</span>';
     return '<div class="br2'+(cls?' '+cls:'')+'"'+(style?' style="'+style+'"':'')+'>'+inner+'</div>';
   }
+  var dn=0;
+  function keyRow(style,label,val,det){
+    var id='det'+(dn++);
+    return '<div class="br2 act kr" style="'+style+'"><a class="anc" href="#" aria-expanded="false" aria-controls="'+id+'" onclick="var d=document.getElementById(\''+id+'\');var o=d.style.display===\'block\';d.style.display=o?\'none\':\'block\';this.setAttribute(\'aria-expanded\',!o);return false;"><span class="lbl">'+label+'</span><span class="val">'+val+'</span><span class="see">Details</span></a></div>'
+      +'<div class="det" id="'+id+'">'+det+'</div>';
+  }
   var mPort=PORTFOLIO_MID[picks[18]]||750000,mEq=EQUITY_MID[picks[13]]||0.65,mBench=RULE100_BENCH[picks[0]]||0.31;
   var mIn=mPort*mEq,mSafe=mPort*mBench,mOver=Math.max(0,mIn-mSafe);
   var prodH='<div class="bx"><div class="bxt">Market Risk Exposure</div>'
-    +'<div class="br2"><span>Total retirement savings</span><span class="bp">'+Qs[18].a[picks[18]].l+'</span></div>'
-    +'<div class="br2"><span>In the stock market (~'+Math.round(mEq*100)+'%)</span><span class="bp">'+fmtDollar(mIn)+'</span></div>'
-    +row('','','At risk in a 30% market drop','<span style="color:#991b1b;font-weight:700">\u2212'+fmtDollar(mIn*0.30)+'</span>','v-recovery')
-    +'<div class="br2"><span>Rule of 100 maximum at your age ('+Math.round(mBench*100)+'%)</span><span class="bp">'+fmtDollar(mSafe)+'</span></div>'
-    +row('act','color:'+(mOver>0?'#991b1b':'#15803d'),'Amount that should be moved into a safe product',(mOver>0?fmtDollar(mOver):'None'),'v-timing')+'</div>';
+    +keyRow('color:#991b1b','At risk in a 30% market drop','\u2212'+fmtDollar(mIn*0.30),
+      '<div class="br2"><span>Total retirement savings</span><span class="bp">'+Qs[18].a[picks[18]].l+'</span></div>'
+      +'<div class="br2"><span>In the stock market (~'+Math.round(mEq*100)+'%)</span><span class="bp">'+fmtDollar(mIn)+'</span></div>'
+      +'<div class="br2"><span>A 30% market drop on that amount</span><span class="bp">\u2212'+fmtDollar(mIn*0.30)+'</span></div>')
+    +keyRow('color:'+(mOver>0?'#991b1b':'#15803d'),'Amount to move away from market volatility (Rule of 100)',(mOver>0?fmtDollar(mOver):'None'),
+      '<div class="br2"><span>In the stock market (~'+Math.round(mEq*100)+'%)</span><span class="bp">'+fmtDollar(mIn)+'</span></div>'
+      +'<div class="br2"><span>Rule of 100 maximum at your age ('+Math.round(mBench*100)+'%)</span><span class="bp">'+fmtDollar(mSafe)+'</span></div>'
+      +'<div class="br2"><span>Amount above that maximum</span><span class="bp">'+(mOver>0?fmtDollar(mOver):'None')+'</span></div>')
+    +'</div>';
   var g=gapInfo(picks);
   var incH='<div class="bx"><div class="bxt">Your Monthly Income Gap</div>'
-    +'<div class="br2"><span>Monthly expenses</span><span class="bp">'+fmtExact(g.exp)+'</span></div>'
-    +'<div class="br2"><span>Social Security</span><span class="bp">\u2212 '+fmtExact(g.ss)+'</span></div>'
-    +'<div class="br2"><span>Other income</span><span class="bp">\u2212 '+fmtExact(g.oth)+'</span></div>'
-    +row('act','color:'+(g.gap>0?'#991b1b':'#15803d'),'Estimated gap your savings must cover',(g.gap>0?fmtExact(g.gap)+' / mo':'None'),'v-gap')+'</div>';
+    +keyRow('color:'+(g.gap>0?'#991b1b':'#15803d'),'Estimated gap your savings must cover',(g.gap>0?fmtExact(g.gap)+' / mo':'None'),
+      '<div class="br2"><span>Monthly expenses</span><span class="bp">'+fmtExact(g.exp)+'</span></div>'
+      +'<div class="br2"><span>Social Security</span><span class="bp">\u2212 '+fmtExact(g.ss)+'</span></div>'
+      +'<div class="br2"><span>Other income</span><span class="bp">\u2212 '+fmtExact(g.oth)+'</span></div>')
+    +'</div>';
   var ltcH=picks[16]===0?'':'<div class="bx"><div class="bxt">Long-Term Care Costs You May Face</div>'
-    +'<div class="br2"><span>Assisted living (national median)</span><span class="bp">'+fmtExact(LTC.al)+' / yr</span></div>'
-    +'<div class="br2"><span>Nursing home, private room</span><span class="bp">'+fmtExact(LTC.nhp)+' / yr</span></div>'
-    +'<div class="br2"><span>Average length of care</span><span class="bp">'+LTC.yrsM+'\u2013'+LTC.yrsW+' years</span></div>'
-    +row('act','color:#991b1b','Potential out-of-pocket total',fmtDollar(LTC.al*LTC.yrsM)+'\u2013'+fmtDollar(LTC.nhp*LTC.yrsW),'v-ltc')+'</div>';
+    +keyRow('color:#991b1b','Potential out-of-pocket total',fmtDollar(LTC.al*LTC.yrsM)+'\u2013'+fmtDollar(LTC.nhp*LTC.yrsW),
+      '<div class="br2"><span>Assisted living (national median)</span><span class="bp">'+fmtExact(LTC.al)+' / yr</span></div>'
+      +'<div class="br2"><span>Nursing home, private room</span><span class="bp">'+fmtExact(LTC.nhp)+' / yr</span></div>'
+      +'<div class="br2"><span>Average length of care</span><span class="bp">'+LTC.yrsM+'\u2013'+LTC.yrsW+' years</span></div>')
+    +'</div>';
   var vH='';
   if(vecs.length){
     vH='<div class="vct">Your Risk Report \u2014 '+vecs.length+' Active Risk Factor'+(vecs.length>1?'s':'')+'</div>';
