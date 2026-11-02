@@ -29,5 +29,5 @@ Shared code for US Retirement Educators' GoHighLevel (GHL) pages. Each GHL page 
 
 ## Status (as of Nov 1, 2026)
 - Done: website refresh live (all 6 site pages on embeds), Meet the Team + 10 agent pages (/joshua-welsh, /misty-plathe, /richard-duese, /august-marcello-iii, /nathan-burks, /katherine-leavitt, /zach-allen, /charissa-lawal, /christian-weisenburger, /jeremy-smith) live with placeholders, live funnel (hook + assessment) on new design, SEO titles set in GHL.
-- In progress: Google Search Console. Next step: Josh adds URL-prefix property https://www.usretirementeducators.org, picks "HTML tag" verification, sends the meta tag; Claude adds it in GHL (the bare domain routes to the funnel hook page, so the tag must go in that funnel's head tracking code), then Josh clicks Verify and submits the sitemap.
+- Done: Google Search Console verified (meta tag in funnel + website head tracking code), sitemap.xml generated in GHL (Settings > Domains > www > XML Sitemap; 10 main pages, agent pages left out until filled) and submitted, home page indexing requested (Nov 1).
 - Waiting on: agent questionnaire replies (photos, bios, badges) to fill agent pages; real reviews for a review carousel; ending the now-meaningless hook split test in GHL.
