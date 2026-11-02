@@ -122,7 +122,7 @@
 (function(){
   // BADGE LIBRARY. Add a badge to an agent with its key in that agent's badges list.
   // ring = text around the top, big = center text, sub = small text under it, label = caption below.
-  // type sets the shape: cert = solid gold seal, license = shield, exam = hexagon, years = ring.
+  // type sets the shape: cert = solid gold seal, license = shield, exam = hexagon, years = ring, specialty = rounded square.
   var BADGES={
     cre:{type:'cert',top:'CERTIFIED',big:'CRE',label:'Certified Retirement Educator'},
     lah:{type:'license',top:'LICENSED',big:'L&H',label:'Life, Accident & Health'},
@@ -136,7 +136,11 @@
     yrs10:{type:'years',top:'YEARS',big:'10+',label:'10+ Years in Business'},
     yrs15:{type:'years',top:'YEARS',big:'15+',label:'15+ Years in Business'},
     yrs20:{type:'years',top:'YEARS',big:'20+',label:'20+ Years in Business'},
-    yrs25:{type:'years',top:'YEARS',big:'25+',label:'25+ Years in Business'}
+    yrs25:{type:'years',top:'YEARS',big:'25+',label:'25+ Years in Business'},
+    ahip:{type:'cert',top:'CERTIFIED',big:'AHIP',label:'AHIP Certified (Medicare)'},
+    safemoney:{type:'specialty',top:'SPECIALTY',big:'SAFE',label:'Safe Money Strategies'},
+    ltc:{type:'specialty',top:'SPECIALTY',big:'LTC',label:'Long-Term Care Planning'},
+    wealth:{type:'specialty',top:'SPECIALTY',big:'WEALTH',label:'Wealth Transfer Planning'}
   };
   var EVERY_AGENT=['cre'];          // badges every agent gets automatically
 
@@ -147,7 +151,7 @@
   // Any section whose field is empty is hidden.
   var AGENTS={
     'jeremy-smith':{
-      name:'Jeremy Smith',title:'President',photo:'',photo2:'',video:'',bookUrl:'',badges:['lah','yrs20'],
+      name:'Jeremy Smith',title:'President',photo:'',photo2:'',video:'',bookUrl:'',badges:['lah','yrs20','safemoney','ltc','wealth'],
       headline:'Insurance & Retirement Planning Expert with more than 22 years in the industry.',
       stats:[['22+','years in the industry']],letter:[],
       quote:'Be a teacher, not a salesperson.',
@@ -233,11 +237,12 @@
     cert:'<circle cx="40" cy="40" r="38" fill="#c9a84c"/><circle cx="40" cy="40" r="33" fill="none" stroke="#0F2347" stroke-width="1.2" opacity=".55"/>',
     license:'<path d="M40 3l32 10v24c0 20-14 33-32 40C22 70 8 57 8 37V13z" fill="#0F2347" stroke="#c9a84c" stroke-width="2.5"/>',
     exam:'<path d="M40 3l32 18.5v37L40 77 8 58.5v-37z" fill="#0F2347" stroke="#c9a84c" stroke-width="2.5"/>',
+    specialty:'<rect x="5" y="5" width="70" height="70" rx="16" fill="#0F2347" stroke="#c9a84c" stroke-width="2.5"/><rect x="11" y="11" width="58" height="58" rx="11" fill="none" stroke="#c9a84c" stroke-width=".8" opacity=".6"/>',
     years:'<circle cx="40" cy="40" r="37" fill="#0F2347" stroke="#c9a84c" stroke-width="2.5"/><circle cx="40" cy="40" r="31" fill="none" stroke="#c9a84c" stroke-width=".8" opacity=".6"/>'
   };
   function badge(b){
     var big=e(b.big),gold=b.type==='cert',ink=gold?'#0F2347':'#fff',acc=gold?'#0F2347':'#c9a84c';
-    var fs=big.length>=4?16:big.length===3?20:26,y=b.type==='license'?47:49;
+    var fs=big.length>=6?12.5:big.length>=4?16:big.length===3?20:26,y=b.type==='license'?47:49;
     return '<div class="bd"><svg viewBox="0 0 80 80" role="img" aria-label="'+e(b.label)+'">'+(SHAPES[b.type]||SHAPES.years)+
       '<text x="40" y="'+(y-(fs>=26?22:19))+'" font-family="Inter,Arial,sans-serif" font-size="6.5" font-weight="700" letter-spacing="1.4" fill="'+acc+'" text-anchor="middle">'+e(b.top)+'</text>'+
       '<text x="40" y="'+y+'" font-family="Georgia,serif" font-size="'+fs+'" font-weight="700" fill="'+ink+'" text-anchor="middle">'+big+'</text>'+
