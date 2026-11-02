@@ -151,7 +151,7 @@
   // Any section whose field is empty is hidden.
   var AGENTS={
     'jeremy-smith':{
-      name:'Jeremy Smith',title:'President & CEO',photo:'',photo2:'',video:'',bookUrl:'',badges:['lah','yrs20','safemoney','ltc','wealth'],
+      name:'Jeremy Smith',title:'President & CEO',photo:'https://jeremysmithacademy.com/wp-content/uploads/2020/01/jeremy-smith-academy-independent-insurance-agent-business-coach-08.png',photoPos:'96% 0',photo2:'',video:'',bookUrl:'',badges:['lah','yrs20','safemoney','ltc','wealth'],
       headline:'Insurance & Retirement Planning Expert with more than 22 years in the industry.',
       stats:[],letter:[],
       quote:'Be a teacher, not a salesperson.',
@@ -200,7 +200,7 @@
     sample:{
       name:'Agent Name',
       title:'Licensed Retirement Specialist',
-      photo:'',                       // headshot URL
+      photo:'',                       // headshot URL (photoPos:'x% y%' optional, to frame a wide photo)
       photo2:'',                      // second, more casual photo (used with the letter)
       video:'',                       // YouTube, Vimeo, or .mp4 link. Leave '' for the letter version.
       bookUrl:'',                     // this agent's calendar link
@@ -255,7 +255,7 @@
   }
   var h='',hasVid=!!a.video,hasLetter=!!(a.letter&&a.letter.length);
   var msg=hasVid?'Watch '+first+'\u2019s message':hasLetter?'Read '+first+'\u2019s note':'';
-  h+='<div class="hero"><div class="wrap"><div class="ph">'+(a.photo?'<img src="'+e(a.photo)+'" alt="'+e(a.name)+'">':person)+'</div><div>'+
+  h+='<div class="hero"><div class="wrap"><div class="ph">'+(a.photo?'<img src="'+e(a.photo)+'" alt="'+e(a.name)+'"'+(a.photoPos?' style="object-position:'+e(a.photoPos)+'"':'')+'>':person)+'</div><div>'+
      '<span class="ey">US Retirement Educators</span><h1>'+e(a.name)+'</h1>'+(a.title?'<div class="ti">'+e(a.title)+'</div>':'')+
      (a.headline?'<p class="hl">'+e(a.headline)+'</p>':'')+
      '<div class="acts">'+(msg?'<a class="btn" href="#ua-msg">'+msg+'</a>':'')+'<a class="'+(msg?'lnk':'btn')+'" href="'+e(book)+'">Schedule a call with '+first+'</a></div>'+

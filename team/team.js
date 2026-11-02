@@ -72,7 +72,7 @@
   // TEAM: one entry per person, shown in this order. Each card links to that person's page (/slug).
   // photo: image URL (leave '' for the placeholder). title and bio are optional.
   var TEAM=[
-    {name:'Jeremy Smith',title:'President & CEO',photo:'',bio:'22+ years in insurance and retirement planning. Specializes in safe money strategies, long-term care, and wealth transfer.',slug:'jeremy-smith'},
+    {name:'Jeremy Smith',title:'President & CEO',photo:'https://jeremysmithacademy.com/wp-content/uploads/2020/01/jeremy-smith-academy-independent-insurance-agent-business-coach-08.png',photoPos:'96% 0',bio:'22+ years in insurance and retirement planning. Specializes in safe money strategies, long-term care, and wealth transfer.',slug:'jeremy-smith'},
     {name:'Joshua Welsh',title:'',photo:'',bio:'',slug:'joshua-welsh'},
     {name:'Misty Plathe',title:'',photo:'',bio:'',slug:'misty-plathe'},
     {name:'Richard Duese',title:'',photo:'',bio:'',slug:'richard-duese'},
@@ -89,7 +89,7 @@
   var g=document.getElementById('usre-team-grid');if(!g)return;
   g.innerHTML=TEAM.map(function(p){
     var first=esc(p.name.split(' ')[0]);
-    var inner='<div class="ut-ph">'+(p.photo?'<img src="'+esc(p.photo)+'" alt="'+esc(p.name)+'">':ph)+'</div>'+
+    var inner='<div class="ut-ph">'+(p.photo?'<img src="'+esc(p.photo)+'" alt="'+esc(p.name)+'"'+(p.photoPos?' style="object-position:'+esc(p.photoPos)+'"':'')+'>':ph)+'</div>'+
       '<div class="ut-in"><h3>'+esc(p.name)+'</h3>'+(p.title?'<div class="ut-t">'+esc(p.title)+'</div>':'')+(p.bio?'<p>'+esc(p.bio)+'</p>':'')+
       (p.slug?'<span class="us-link">Meet '+first+' '+arrow+'</span>':'')+'</div>';
     return p.slug?'<a class="ut-m" href="/'+encodeURIComponent(p.slug)+'">'+inner+'</a>':'<div class="ut-m">'+inner+'</div>';
