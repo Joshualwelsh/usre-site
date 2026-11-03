@@ -78,7 +78,7 @@
     {name:'Richard Duese',title:'',photo:'',bio:'',slug:'richard-duese'},
     {name:'August Marcello III',title:'',photo:'',bio:'',slug:'august-marcello-iii'},
     {name:'Nathan Burks',title:'Certified Retirement Educator & Licensed Retirement Specialist',photo:'https://empowered2retire.com/wp-content/uploads/2025/08/nathan.jpg',bio:'Two decades of retirement education, seminars, and helping people navigate to and through retirement.',slug:'nathan-burks'},
-    {name:'Katherine Leavitt',title:'',photo:'',bio:'',slug:'katherine-leavitt'},
+    {name:'Katherine Leavitt',title:'Independent Agent',photo:'https://joshualwelsh.github.io/usre-site/assets/team/katherine-leavitt.jpg',bio:'',slug:'katherine-leavitt'},
     {name:'Zach Allen',title:'',photo:'',bio:'',slug:'zach-allen'},
     {name:'Charissa Lawal',title:'',photo:'',bio:'',slug:'charissa-lawal'},
     {name:'Christian Weisenburger',title:'',photo:'',bio:'',slug:'christian-weisenburger'}
