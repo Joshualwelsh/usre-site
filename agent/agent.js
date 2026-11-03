@@ -127,8 +127,14 @@
       headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
     },
     'nathan-burks':{
-      name:'Nathan Burks',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
-      headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
+      name:'Nathan Burks',title:'',photo:'https://empowered2retire.com/wp-content/uploads/2025/08/nathan.jpg',photo2:'',video:'',bookUrl:'',badges:['yrs20'],
+      headline:'For two decades, Nathan has provided retirement education and empowered people to better understand how to navigate to and through retirement.',
+      stats:[],letter:[],quote:'',
+      story:['Shortly after graduating from California State University, Chico, with a bachelor\u2019s degree in psychology, Nathan was soon introduced to the world of financial services and life insurance. He became consumed with what seemed to be a lack of retirement education held by his clients and felt that previous advisors to these clients weren\u2019t providing the vital education they needed to understand their retirement, leading them to a place where they would live unprepared. So, Nathan dove in head-first, immersing himself in learning as much as he could to better provide retirement knowledge to his clients. It\u2019s what drives Nathan to this day, making sure people do not run blindly into retirement.',
+        'In addition to providing retirees with financial education and client service, Nathan also holds retirement seminars and live events to keep the community and his clients informed. He works with his staff to develop retirement strategies in a team setting and trains new producers as they join the team. He also creates community events to help future retirement savers better prepare for their financial future.'],
+      reasons:[],testimonials:[],
+      personal:['Nathan and his wife, Rachel, live in Lenoir City where they\u2019re raising two children, Emma Grace and Beau Tyler. The family has many more heartbeats in the home with a dog named Phoebe, a cat named Higgins, and another cat named Boojie \u2014 in addition to four family chickens, Kip, Richard, Red and Silky. An admitted workaholic sometimes, Nathan will still get away from the office for spare time, where he enjoys fishing and the game of golf, a sport he played into college and calls \u201cthe game nobody ever masters!\u201d'],
+      interests:['Family','Fishing','Golf']
     },
     'katherine-leavitt':{
       name:'Katherine Leavitt',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
