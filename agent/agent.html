@@ -63,12 +63,11 @@
 #usre-agent .acts{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
 #usre-agent .lnk{color:#fff;font-weight:600;font-size:15px;text-decoration:none;border-bottom:1px solid rgba(201,168,76,.7);padding-bottom:2px}
 /* letter */
-#usre-agent .letter{display:grid;grid-template-columns:1fr 320px;gap:48px;align-items:start}
-#usre-agent .letter .lp{order:2}
-#usre-agent .letter .lp{aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:linear-gradient(160deg,var(--nv),#0a1830);display:flex;align-items:center;justify-content:center;box-shadow:0 24px 60px rgba(15,30,51,.16)}
-#usre-agent .letter .lp img{width:100%;height:100%;object-fit:cover}
+#usre-agent .letter{display:grid;grid-template-columns:1fr 380px;align-items:stretch;background:#fff;border:1px solid var(--br);border-top:4px solid var(--gd);border-radius:6px 6px 18px 18px;overflow:hidden;box-shadow:0 18px 50px rgba(15,30,51,.08)}
+#usre-agent .letter .lp{position:relative;min-height:100%;background:linear-gradient(160deg,var(--nv),#0a1830);display:flex;align-items:center;justify-content:center}
+#usre-agent .letter .lp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 #usre-agent .letter .lp svg{width:45%;color:rgba(201,168,76,.55)}
-#usre-agent .paper{background:#fff;border:1px solid var(--br);border-top:4px solid var(--gd);border-radius:6px 6px 18px 18px;padding:40px 44px;box-shadow:0 18px 50px rgba(15,30,51,.08)}
+#usre-agent .paper{padding:44px 48px}
 #usre-agent .paper p{font-family:Georgia,'Times New Roman',serif;font-size:18px;line-height:1.7;color:#2b3443;margin-bottom:16px}
 #usre-agent .sig{font-family:'Allura',cursive;font-size:44px;color:var(--nd);line-height:1;margin-top:18px}
 #usre-agent .sigt{font-size:13px;color:var(--mu);margin-top:6px}
@@ -104,8 +103,8 @@
   #usre-agent .stats .wrap{grid-template-columns:repeat(2,1fr)}
   #usre-agent .story{grid-template-columns:1fr;gap:28px}
   #usre-agent .cards,#usre-agent .steps,#usre-agent .reasons{grid-template-columns:1fr}
-  #usre-agent .letter{grid-template-columns:1fr;gap:28px}
-  #usre-agent .letter .lp{max-width:300px;margin:0 auto;width:100%;order:0}
+  #usre-agent .letter{grid-template-columns:1fr}
+  #usre-agent .letter .lp{order:-1;min-height:0;height:340px}
   #usre-agent .acts{justify-content:center}
 }
 @media(max-width:600px){
@@ -266,8 +265,9 @@
   if(bk.length)h+='<section class="badges"><div class="wrap"><span class="ey">Credentials &amp; Accolades</span><h2>Licensed, certified, and experienced</h2><div class="bgrid">'+bk.map(function(k){return badge(BADGES[k],k);}).join('')+'</div></div></section>';
   if(hasVid)h+='<section class="alt" id="ua-msg"><div class="wrap vid"><span class="ey">A Message From '+first+'</span><h2>Get to know me</h2><div class="vf">'+video(a.video)+'</div></div></section>';
   else if(hasLetter){var p2=a.photo2||a.photo;
-    h+='<section class="alt" id="ua-msg"><div class="wrap letter"><div class="lp">'+(p2?'<img src="'+e(p2)+'" alt="'+e(a.name)+'"'+(a.photo2&&a.photo2Pos?' style="object-position:'+e(a.photo2Pos)+'"':'')+'>':person)+'</div><div><span class="ey">A Note From '+first+'</span><div class="paper">'+
-       a.letter.map(function(p){return '<p>'+e(p)+'</p>';}).join('')+'<div class="sig">'+e(a.name)+'</div><div class="sigt">'+e(a.title)+', US Retirement Educators</div></div></div></div></section>';}
+    h+='<section class="alt" id="ua-msg"><div class="wrap"><span class="ey">A Note From '+first+'</span><div class="letter"><div class="paper">'+
+       a.letter.map(function(p){return '<p>'+e(p)+'</p>';}).join('')+'<div class="sig">'+e(a.name)+'</div><div class="sigt">'+e(a.title)+', US Retirement Educators</div></div>'+
+       '<div class="lp">'+(p2?'<img src="'+e(p2)+'" alt="'+e(a.name)+'"'+(a.photo2&&a.photo2Pos?' style="object-position:'+e(a.photo2Pos)+'"':'')+'>':person)+'</div></div></div></section>';}
   if(a.story&&a.story.length)h+='<section><div class="wrap story"><div><span class="ey">My Story</span><h2>Why I do this work</h2>'+(a.quote?'<blockquote>\u201c'+e(a.quote)+'\u201d</blockquote>':'')+'</div><div class="tx">'+a.story.map(function(p){return '<p>'+e(p)+'</p>';}).join('')+'</div></div></section>';
   if(a.reasons&&a.reasons.length)h+='<section class="alt"><div class="wrap"><span class="ey">Why Families Choose '+first+'</span><h2>What you can count on</h2><div class="reasons">'+a.reasons.map(function(r,i){return '<div class="rs"><div class="rn">0'+(i+1)+'</div><h3>'+e(r[0])+'</h3><p>'+e(r[1])+'</p></div>';}).join('')+'</div></div></section>';
   if(a.testimonials&&a.testimonials.length)h+='<section><div class="wrap"><span class="ey">Client Stories</span><h2>What clients say</h2><div class="cards">'+a.testimonials.map(function(t){return '<div class="tq"><p>\u201c'+e(t[0])+'\u201d</p><b>'+e(t[1])+'</b></div>';}).join('')+'</div></div></section>';
