@@ -150,6 +150,10 @@
       name:'Charissa Lawal',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
       headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
     },
+    'kori-moore':{
+      name:'Kori Moore',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
+      headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
+    },
     'christian-weisenburger':{
       name:'Christian Weisenburger',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
       headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
