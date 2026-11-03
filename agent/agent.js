@@ -121,11 +121,11 @@
       headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
     },
     'richard-duese':{
-      name:'Richard Duese',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
+      name:'Richard Duese',title:'Certified Retirement Educator & Licensed Retirement Specialist',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
       headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
     },
     'august-marcello-iii':{
-      name:'August Marcello III',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
+      name:'August Marcello III',title:'Certified Retirement Educator & Licensed Retirement Specialist',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
       headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
     },
     'nathan-burks':{
@@ -139,19 +139,19 @@
       interests:['Family','Fishing','Golf']
     },
     'katherine-leavitt':{
-      name:'Katherine Leavitt',title:'Independent Agent',photo:'https://joshualwelsh.github.io/usre-site/assets/team/katherine-leavitt.jpg',photo2:'',video:'',bookUrl:'',badges:[],
+      name:'Katherine Leavitt',title:'Certified Retirement Educator & Licensed Retirement Specialist',photo:'https://joshualwelsh.github.io/usre-site/assets/team/katherine-leavitt.jpg',photo2:'',video:'',bookUrl:'',badges:[],
       headline:'Florida License G255547 \u00b7 Fort Myers, Florida',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
     },
     'zach-allen':{
-      name:'Zach Allen',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
+      name:'Zach Allen',title:'Certified Retirement Educator & Licensed Retirement Specialist',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
       headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
     },
     'charissa-lawal':{
-      name:'Charissa Lawal',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
+      name:'Charissa Lawal',title:'Certified Retirement Educator & Licensed Retirement Specialist',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
       headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
     },
     'christian-weisenburger':{
-      name:'Christian Weisenburger',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
+      name:'Christian Weisenburger',title:'Certified Retirement Educator & Licensed Retirement Specialist',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
       headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
     },
     sample:{
