@@ -20,6 +20,7 @@
 #usre-agent .hero .ey{color:var(--gd)}
 #usre-agent .hero h1{font-family:'Inter',Arial,sans-serif;font-size:48px;line-height:1.08;margin-bottom:8px;color:#fff;letter-spacing:-1.2px;font-weight:800}
 #usre-agent .hero .ti{font-size:17px;color:var(--gd);font-weight:600;margin-bottom:18px}
+#usre-agent .hero .pt{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.4px;color:#dfe5ee;border:1px solid rgba(201,168,76,.55);border-radius:999px;padding:5px 12px;margin:-6px 0 18px}
 #usre-agent .hero .hl{font-size:19px;color:#d5dbe5;max-width:560px;margin-bottom:28px}
 #usre-agent .creds{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
 #usre-agent .creds span{font-size:13px;font-weight:600;color:#fff;border:1px solid rgba(201,168,76,.5);border-radius:999px;padding:7px 14px}
@@ -181,7 +182,7 @@
       headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
     },
     'nathan-burks':{
-      name:'Nathan Burks',title:'Certified Retirement Educator & Licensed Retirement Specialist',photo:'https://empowered2retire.com/wp-content/uploads/2025/08/nathan.jpg',photo2:'',video:'',bookUrl:'',badges:['lah','yrs20','ahip','safemoney','ltc','wealth','speaker','trainer'],
+      name:'Nathan Burks',title:'Certified Retirement Educator & Licensed Retirement Specialist',partner:'Empowered To Retire',photo:'https://empowered2retire.com/wp-content/uploads/2025/08/nathan.jpg',photo2:'',video:'',bookUrl:'',badges:['lah','yrs20','ahip','safemoney','ltc','wealth','speaker','trainer'],
       headline:'For two decades, Nathan has provided retirement education and empowered people to better understand how to navigate to and through retirement.',
       stats:[],letter:[],quote:'',
       story:['Shortly after graduating from California State University, Chico, with a bachelor\u2019s degree in psychology, Nathan was soon introduced to the world of financial services and life insurance. He became consumed with what seemed to be a lack of retirement education held by his clients and felt that previous advisors to these clients weren\u2019t providing the vital education they needed to understand their retirement, leading them to a place where they would live unprepared. So, Nathan dove in head-first, immersing himself in learning as much as he could to better provide retirement knowledge to his clients. It\u2019s what drives Nathan to this day, making sure people do not run blindly into retirement.',
@@ -213,6 +214,7 @@
       photo2:'',                      // second, more casual photo (used with the letter)
       video:'',                       // YouTube, Vimeo, or .mp4 link. Leave '' for the letter version.
       bookUrl:'',                     // this agent's calendar link
+      partner:'',                     // partner agent's own firm, shown as 'Partner Agent · Firm' (optional)
       headline:'I help people approaching retirement protect what they\u2019ve saved and turn it into income they can count on.',
       badges:['lah','series65','yrs10'],   // keys from BADGES above
       stats:[['[X]','years experience'],['[X]+','families helped'],['[X]','states licensed']],
@@ -265,7 +267,7 @@
   var h='',hasVid=!!a.video,hasLetter=!!(a.letter&&a.letter.length);
   var msg=hasVid?'Watch '+first+'\u2019s message':hasLetter?'Read '+first+'\u2019s note':'';
   h+='<div class="hero"><div class="wrap"><div class="ph">'+(a.photo?'<img src="'+e(a.photo)+'" alt="'+e(a.name)+'"'+(a.photoPos?' style="object-position:'+e(a.photoPos)+'"':'')+'>':person)+'</div><div>'+
-     '<span class="ey">US Retirement Educators</span><h1>'+e(a.name)+'</h1>'+(a.title?'<div class="ti">'+e(a.title)+'</div>':'')+
+     '<span class="ey">US Retirement Educators</span><h1>'+e(a.name)+'</h1>'+(a.title?'<div class="ti">'+e(a.title)+'</div>':'')+(a.partner?'<div class="pt">Partner Agent \u00b7 '+e(a.partner)+'</div>':'')+
      (a.headline?'<p class="hl">'+e(a.headline)+'</p>':'')+
      ((msg||book)?'<div class="acts">'+(msg?'<a class="btn" href="#ua-msg">'+msg+'</a>':'')+(book?'<a class="'+(msg?'lnk':'btn')+'" href="'+e(book)+'">Schedule a call with '+first+'</a>':'')+'</div>':'')+
      '</div></div></div>';
