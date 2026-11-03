@@ -180,7 +180,7 @@
   var a=AGENTS[decodeURIComponent(q||'').toLowerCase()]||AGENTS[AGENT_DEFAULT];
   function e(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   var first=e(a.name.split(' ')[0]);
-  var book=a.bookUrl||DEFAULT_BOOK||'#';
+  var book=a.bookUrl||DEFAULT_BOOK||'';  // no calendar link = no schedule buttons
   var person='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4.2"/><path d="M3.5 21c.9-4.4 4.3-7 8.5-7s7.6 2.6 8.5 7z"/></svg>';
   function video(u){
     if(!u)return '<div class="vp"><i><svg width="26" height="26" viewBox="0 0 24 24" fill="#0F2347"><path d="M8 5v14l11-7z"/></svg></i>Video coming soon</div>';
@@ -215,7 +215,7 @@
   h+='<div class="hero"><div class="wrap"><div class="ph">'+(a.photo?'<img src="'+e(a.photo)+'" alt="'+e(a.name)+'"'+(a.photoPos?' style="object-position:'+e(a.photoPos)+'"':'')+'>':person)+'</div><div>'+
      '<span class="ey">US Retirement Educators</span><h1>'+e(a.name)+'</h1>'+(a.title?'<div class="ti">'+e(a.title)+'</div>':'')+
      (a.headline?'<p class="hl">'+e(a.headline)+'</p>':'')+
-     '<div class="acts">'+(msg?'<a class="btn" href="#ua-msg">'+msg+'</a>':'')+'<a class="'+(msg?'lnk':'btn')+'" href="'+e(book)+'">Schedule a call with '+first+'</a></div>'+
+     ((msg||book)?'<div class="acts">'+(msg?'<a class="btn" href="#ua-msg">'+msg+'</a>':'')+(book?'<a class="'+(msg?'lnk':'btn')+'" href="'+e(book)+'">Schedule a call with '+first+'</a>':'')+'</div>':'')+
      '</div></div></div>';
   if(a.stats&&a.stats.length)h+='<div class="stats"><div class="wrap" style="grid-template-columns:repeat('+Math.min(a.stats.length,4)+',1fr)">'+a.stats.map(function(s){return '<div><b>'+e(s[0])+'</b><span>'+e(s[1])+'</span></div>';}).join('')+'</div></div>';
   var bk=EVERY_AGENT.concat((a.badges||[]).filter(function(k){return EVERY_AGENT.indexOf(k)<0;})).filter(function(k){return BADGES[k];});
@@ -234,7 +234,7 @@
      '<div class="step"><div class="n">3</div><h3>Leave with clarity</h3><p>You\u2019ll get a plain-English picture of your options. No cost, and no obligation.</p></div>'+
      '</div><div class="prep"><h3>Helpful to have handy</h3><ul><li>Recent retirement account statements (401k, IRA)</li><li>Your Social Security estimate</li><li>A rough idea of your monthly expenses</li><li>Any existing annuity or life insurance policies</li><li>Your spouse or partner, if they\u2019re part of the plan</li><li>Your questions. No question is too small.</li></ul></div></div></section>';
   if((a.personal&&a.personal.length)||(a.interests&&a.interests.length))h+='<section><div class="wrap pers"><span class="ey">Off the Clock</span><h2>A little more about '+first+'</h2>'+(a.personal||[]).map(function(p){return '<p>'+e(p)+'</p>';}).join('')+((a.interests&&a.interests.length)?'<div class="tags">'+a.interests.map(function(t){return '<span>'+e(t)+'</span>';}).join('')+'</div>':'')+'</div></section>';
-  h+='<section class="final"><div class="wrap"><h2>Looking forward to meeting you</h2><div class="sig">'+e(a.name)+'</div><a class="btn" href="'+e(book)+'">Schedule a call with '+first+'</a><small>Already scheduled? You\u2019re all set. Need a different time? Use the link in your confirmation.</small></div></section>';
+  h+='<section class="final"><div class="wrap"><h2>Looking forward to meeting you</h2><div class="sig">'+e(a.name)+'</div>'+(book?'<a class="btn" href="'+e(book)+'">Schedule a call with '+first+'</a><small>Already scheduled? You\u2019re all set. Need a different time? Use the link in your confirmation.</small>':'')+'</div></section>';
   h+='<div class="wrap disc">Annuity guarantees are backed by the financial strength and claims-paying ability of the issuing insurance company. Annuities are not bank deposits, are not FDIC insured, and are not insured by any federal government agency.</div>';
   document.getElementById('ua-root').innerHTML=h;
 })();
