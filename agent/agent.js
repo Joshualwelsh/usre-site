@@ -110,6 +110,17 @@
         'Through his leadership, education, and commitment to ethical practices, Jeremy continues to influence the retirement planning industry by helping financial professionals become better educators and empowering retirees to make smarter, more informed financial decisions.'],
       reasons:[],testimonials:[],personal:[],interests:[]
     },
+    'jeremy-preview':{  // PREVIEW ONLY (?a=jeremy-preview): letter draft awaiting Jeremy's OK
+      name:'Jeremy Smith',title:'President & CEO',photo:'https://joshualwelsh.github.io/usre-site/assets/team/jeremy-smith.jpg',photo2:'https://jeremysmithacademy.com/wp-content/uploads/2020/01/jeremy-smith-academy-independent-insurance-agent-business-coach-08.png',photo2Pos:'96% 0',video:'',bookUrl:'',badges:['lah','yrs20','safemoney','ltc','wealth'],
+      headline:'Insurance & Retirement Planning Expert with more than 22 years in the industry.',
+      stats:[],letter:['Thank you for taking the time to get to know me. For more than 22 years, I\u2019ve worked in insurance and retirement planning, and one belief has guided all of it: be a teacher, not a salesperson.','You\u2019ve worked hard for what you\u2019ve saved, and you deserve to understand your options before you decide anything. My job is to show you exactly where you stand, explain your choices in plain English, and help you protect your savings, prepare for the unexpected, and leave the legacy you want for your family. No pressure, ever.','Whether we end up working together or not, my goal is that you walk away feeling more confident about your retirement than when we started. I look forward to talking with you.'],
+      quote:'Be a teacher, not a salesperson.',
+      story:['Jeremy Smith has been a leader in the insurance and financial services industry for more than 22 years. As President & CEO of U.S. Retirement Educators, Vice President of Advanced Agent Marketing, and Founder of the Jeremy Smith Academy, Jeremy has dedicated his career to helping retirement professionals build successful businesses while ensuring seniors receive the education and guidance they deserve.',
+        'Over the past decade, Jeremy has focused much of his time on training retirement planners in ethical business practices, industry best practices, and effective retirement planning strategies. His philosophy is simple: Be a teacher, not a salesperson. He believes retirees deserve to understand their options, make informed decisions, and feel confident about their financial futures without the pressure of a sales-driven approach.',
+        'Jeremy specializes in safe money strategies, long-term care solutions, and wealth transfer planning to help individuals protect their retirement savings, prepare for the unexpected, and preserve their legacy for future generations.',
+        'Through his leadership, education, and commitment to ethical practices, Jeremy continues to influence the retirement planning industry by helping financial professionals become better educators and empowering retirees to make smarter, more informed financial decisions.'],
+      reasons:[],testimonials:[],personal:[],interests:[]
+    },
     'joshua-welsh':{
       name:'Joshua Welsh',title:'',photo:'',photo2:'',video:'',bookUrl:'',badges:[],
       headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
@@ -214,7 +225,7 @@
   if(bk.length)h+='<section class="badges"><div class="wrap"><span class="ey">Credentials &amp; Accolades</span><h2>Licensed, certified, and experienced</h2><div class="bgrid">'+bk.map(function(k){return badge(BADGES[k],k);}).join('')+'</div></div></section>';
   if(hasVid)h+='<section class="alt" id="ua-msg"><div class="wrap vid"><span class="ey">A Message From '+first+'</span><h2>Get to know me</h2><div class="vf">'+video(a.video)+'</div></div></section>';
   else if(hasLetter){var p2=a.photo2||a.photo;
-    h+='<section class="alt" id="ua-msg"><div class="wrap letter"><div class="lp">'+(p2?'<img src="'+e(p2)+'" alt="'+e(a.name)+'">':person)+'</div><div><span class="ey">A Note From '+first+'</span><div class="paper">'+
+    h+='<section class="alt" id="ua-msg"><div class="wrap letter"><div class="lp">'+(p2?'<img src="'+e(p2)+'" alt="'+e(a.name)+'"'+(a.photo2&&a.photo2Pos?' style="object-position:'+e(a.photo2Pos)+'"':'')+'>':person)+'</div><div><span class="ey">A Note From '+first+'</span><div class="paper">'+
        a.letter.map(function(p){return '<p>'+e(p)+'</p>';}).join('')+'<div class="sig">'+e(a.name)+'</div><div class="sigt">'+e(a.title)+', US Retirement Educators</div></div></div></div></section>';}
   if(a.story&&a.story.length)h+='<section><div class="wrap story"><div><span class="ey">My Story</span><h2>Why I do this work</h2>'+(a.quote?'<blockquote>\u201c'+e(a.quote)+'\u201d</blockquote>':'')+'</div><div class="tx">'+a.story.map(function(p){return '<p>'+e(p)+'</p>';}).join('')+'</div></div></section>';
   if(a.reasons&&a.reasons.length)h+='<section class="alt"><div class="wrap"><span class="ey">Why Families Choose '+first+'</span><h2>What you can count on</h2><div class="reasons">'+a.reasons.map(function(r,i){return '<div class="rs"><div class="rn">0'+(i+1)+'</div><h3>'+e(r[0])+'</h3><p>'+e(r[1])+'</p></div>';}).join('')+'</div></div></section>';
