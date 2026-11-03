@@ -103,8 +103,9 @@
   #usre-agent .stats .wrap{grid-template-columns:repeat(2,1fr)}
   #usre-agent .story{grid-template-columns:1fr;gap:28px}
   #usre-agent .cards,#usre-agent .steps,#usre-agent .reasons{grid-template-columns:1fr}
-  #usre-agent .letter{grid-template-columns:1fr}
-  #usre-agent .letter .lp{order:-1;min-height:0;height:340px}
+  #usre-agent .letter{display:flex;flex-direction:column;gap:28px;background:none;border:0;border-radius:0;overflow:visible;box-shadow:none}
+  #usre-agent .letter .lp{order:-1;min-height:0;aspect-ratio:4/5;max-width:300px;width:100%;margin:0 auto;border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(15,30,51,.16)}
+  #usre-agent .letter .paper{background:#fff;border:1px solid var(--br);border-top:4px solid var(--gd);border-radius:6px 6px 18px 18px;box-shadow:0 18px 50px rgba(15,30,51,.08)}
   #usre-agent .acts{justify-content:center}
 }
 @media(max-width:600px){
