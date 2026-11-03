@@ -127,7 +127,7 @@
       headline:'',stats:[],letter:[],quote:'',story:[],reasons:[],testimonials:[],personal:[],interests:[]
     },
     'nathan-burks':{
-      name:'Nathan Burks',title:'Licensed Retirement Specialist',photo:'https://empowered2retire.com/wp-content/uploads/2025/08/nathan.jpg',photo2:'',video:'',bookUrl:'',badges:['yrs20'],
+      name:'Nathan Burks',title:'Certified Retirement Educator & Licensed Retirement Specialist',photo:'https://empowered2retire.com/wp-content/uploads/2025/08/nathan.jpg',photo2:'',video:'',bookUrl:'',badges:['yrs20'],
       headline:'For two decades, Nathan has provided retirement education and empowered people to better understand how to navigate to and through retirement.',
       stats:[],letter:[],quote:'',
       story:['Shortly after graduating from California State University, Chico, with a bachelor\u2019s degree in psychology, Nathan was soon introduced to the world of financial services and life insurance. He became consumed with what seemed to be a lack of retirement education held by his clients and felt that previous advisors to these clients weren\u2019t providing the vital education they needed to understand their retirement, leading them to a place where they would live unprepared. So, Nathan dove in head-first, immersing himself in learning as much as he could to better provide retirement knowledge to his clients. It\u2019s what drives Nathan to this day, making sure people do not run blindly into retirement.',
