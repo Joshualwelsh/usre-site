@@ -100,17 +100,6 @@
   // Any section whose field is empty is hidden.
   var AGENTS={
     'jeremy-smith':{
-      name:'Jeremy Smith',title:'President & CEO',photo:'https://joshualwelsh.github.io/usre-site/assets/team/jeremy-smith.jpg',photo2:'',video:'',bookUrl:'',badges:['lah','yrs20','safemoney','ltc','wealth'],
-      headline:'Insurance & Retirement Planning Expert with more than 22 years in the industry.',
-      stats:[],letter:[],
-      quote:'Be a teacher, not a salesperson.',
-      story:['Jeremy Smith has been a leader in the insurance and financial services industry for more than 22 years. As President & CEO of U.S. Retirement Educators, Vice President of Advanced Agent Marketing, and Founder of the Jeremy Smith Academy, Jeremy has dedicated his career to helping retirement professionals build successful businesses while ensuring seniors receive the education and guidance they deserve.',
-        'Over the past decade, Jeremy has focused much of his time on training retirement planners in ethical business practices, industry best practices, and effective retirement planning strategies. His philosophy is simple: Be a teacher, not a salesperson. He believes retirees deserve to understand their options, make informed decisions, and feel confident about their financial futures without the pressure of a sales-driven approach.',
-        'Jeremy specializes in safe money strategies, long-term care solutions, and wealth transfer planning to help individuals protect their retirement savings, prepare for the unexpected, and preserve their legacy for future generations.',
-        'Through his leadership, education, and commitment to ethical practices, Jeremy continues to influence the retirement planning industry by helping financial professionals become better educators and empowering retirees to make smarter, more informed financial decisions.'],
-      reasons:[],testimonials:[],personal:[],interests:[]
-    },
-    'jeremy-preview':{  // PREVIEW ONLY (?a=jeremy-preview): letter draft awaiting Jeremy's OK
       name:'Jeremy Smith',title:'President & CEO',photo:'https://joshualwelsh.github.io/usre-site/assets/team/jeremy-smith.jpg',photo2:'https://jeremysmithacademy.com/wp-content/uploads/2020/01/jeremy-smith-academy-independent-insurance-agent-business-coach-08.png',photo2Pos:'96% 0',video:'',bookUrl:'',badges:['lah','yrs20','safemoney','ltc','wealth'],
       headline:'Insurance & Retirement Planning Expert with more than 22 years in the industry.',
       stats:[],letter:['Thank you for taking the time to get to know me. For more than 22 years, I\u2019ve worked in insurance and retirement planning, and one belief has guided all of it: be a teacher, not a salesperson.','You\u2019ve worked hard for what you\u2019ve saved, and you deserve to understand your options before you decide anything. My job is to show you exactly where you stand, explain your choices in plain English, and help you protect your savings, prepare for the unexpected, and leave the legacy you want for your family. No pressure, ever.','Whether we end up working together or not, my goal is that you walk away feeling more confident about your retirement than when we started. I look forward to talking with you.'],
