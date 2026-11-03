@@ -72,7 +72,7 @@
   // TEAM: one entry per person, shown in this order. Each card links to that person's page (/slug).
   // photo: image URL (leave '' for the placeholder). title and bio are optional.
   var TEAM=[
-    {name:'Jeremy Smith',title:'President & CEO',photo:'https://jeremysmithacademy.com/wp-content/uploads/2020/01/jeremy-smith-academy-independent-insurance-agent-business-coach-08.png',photoPos:'96% 0',bio:'22+ years in insurance and retirement planning. Specializes in safe money strategies, long-term care, and wealth transfer.',slug:'jeremy-smith'},
+    {name:'Jeremy Smith',title:'President & CEO',photo:'https://joshualwelsh.github.io/usre-site/assets/team/jeremy-smith.jpg',bio:'22+ years in insurance and retirement planning. Specializes in safe money strategies, long-term care, and wealth transfer.',slug:'jeremy-smith'},
     {name:'Joshua Welsh',title:'',photo:'',bio:'',slug:'joshua-welsh'},
     {name:'Misty Plathe',title:'',photo:'',bio:'',slug:'misty-plathe'},
     {name:'Richard Duese',title:'',photo:'',bio:'',slug:'richard-duese'},
